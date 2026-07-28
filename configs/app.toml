@@ -1,0 +1,78 @@
+# Maestro CLI Configuration
+# This file is loaded in addition to .env
+
+[llm]
+# LLM provider settings
+provider = "openai"  # openai, anthropic, local
+api_key = "${LLM_API_KEY}"
+base_url = "${LLM_BASE_URL}"
+model = "${LLM_MODEL}"
+timeout = ${LLM_TIMEOUT}
+max_tokens = ${LLM_MAX_TOKENS}
+temperature = ${LLM_TEMPERATURE}
+
+# Model-specific settings
+[llm.models.openai]
+api_version = "2024-06-01"
+
+[llm.models.anthropic]
+api_version = "2023-06-01"
+
+[llm.models.local]
+base_url = "http://localhost:11434"
+model = "llama3"
+
+[audio]
+sample_rate = ${AUDIO_SAMPLE_RATE}
+bit_depth = ${AUDIO_BIT_DEPTH}
+buffer_size = ${AUDIO_BUFFER_SIZE}
+
+# Normalization settings
+target_lufs = -14.0
+target_peak = -1.0
+
+[midi]
+ticks_per_beat = ${MIDI_TICKS_PER_BEAT}
+velocity_min = ${MIDI_VELOCITY_MIN}
+velocity_max = ${MIDI_VELOCITY_MAX}
+humanize = ${MIDI_HUMANIZE}
+humanize_amount = ${MIDI_HUMANIZE_AMOUNT}
+
+# MIDI 2.0 settings
+midi2_enabled = false
+ump_version = "1.0"
+
+[carla]
+host = "${CARLA_HOST}"
+osc_port = ${CARLA_OSC_PORT}
+server_port = ${CARLA_SERVER_PORT}
+timeout = ${CARLA_TIMEOUT}
+rack_path = "${CARLA_RACK_PATH}"
+start_cmd = "${CARLA_START_CMD}"
+
+# Default plugins
+default_rack = "gospel"
+plugin_dirs = [
+    "/usr/lib/vst",
+    "/usr/lib/vst3",
+    "/usr/lib/lv2",
+    "~/vst",
+    "~/.vst"
+]
+
+[paths]
+songs_dir = "${SONGS_DIR}"
+configs_dir = "${CONFIG_DIR}"
+prompts_dir = "${PROMPTS_DIR}"
+log_dir = "${LOG_DIR}"
+
+[logging]
+level = "${LOG_LEVEL}"
+format = "${LOG_FORMAT}"
+file_level = "DEBUG"
+max_size_mb = 10
+backup_count = 5
+
+[debug]
+enabled = ${DEBUG}
+verbose = false

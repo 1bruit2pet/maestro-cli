@@ -1,0 +1,229 @@
+{
+  "version": "1.0",
+  "styles": {
+    "gospel": {
+      "description": "Style Gospel avec orgue Hammond, basse ronde, batterie punchy",
+      "mappings": [
+        {
+          "id": "gospel_keys",
+          "role": "keys",
+          "plugin": "EPiano",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/EPiano.vst3",
+          "preset": "Warm Suitcase",
+          "default_slot": 1,
+          "volume": 0.8,
+          "pan": 0.5,
+          "midi_channel": 0,
+          "required": true
+        },
+        {
+          "id": "gospel_bass",
+          "role": "bass",
+          "plugin": "BassPlugin",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/BassPlugin.vst3",
+          "preset": "Round Finger",
+          "default_slot": 2,
+          "volume": 1.0,
+          "pan": 0.5,
+          "midi_channel": 0,
+          "required": true
+        },
+        {
+          "id": "gospel_drums",
+          "role": "drums",
+          "plugin": "DrumMachine",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/DrumMachine.vst3",
+          "preset": "Gospel Kit",
+          "default_slot": 3,
+          "volume": 1.0,
+          "pan": 0.5,
+          "midi_channel": 9,
+          "required": true
+        },
+        {
+          "id": "gospel_pad",
+          "role": "pad",
+          "plugin": "StringEnsemble",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/StringEnsemble.vst3",
+          "preset": "Warm Strings",
+          "default_slot": 4,
+          "volume": 0.6,
+          "pan": 0.7,
+          "midi_channel": 0,
+          "required": false
+        },
+        {
+          "id": "gospel_lead",
+          "role": "lead",
+          "plugin": "SynthLead",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/SynthLead.vst3",
+          "preset": "Bright Lead",
+          "default_slot": 5,
+          "volume": 0.7,
+          "pan": 0.3,
+          "midi_channel": 0,
+          "required": false
+        }
+      ]
+    },
+    "neo_soul": {
+      "description": "Style Neo-Soul avec Rhodes, basse slappée, drums groovy",
+      "mappings": [
+        {
+          "id": "neosoul_keys",
+          "role": "keys",
+          "plugin": "Rhodes",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/Rhodes.vst3",
+          "preset": "Warm Rhodes",
+          "default_slot": 1,
+          "volume": 0.85,
+          "pan": 0.45,
+          "midi_channel": 0,
+          "required": true
+        },
+        {
+          "id": "neosoul_bass",
+          "role": "bass",
+          "plugin": "BassPlugin",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/BassPlugin.vst3",
+          "preset": "Slap Bass",
+          "default_slot": 2,
+          "volume": 0.9,
+          "pan": 0.5,
+          "midi_channel": 0,
+          "required": true
+        },
+        {
+          "id": "neosoul_drums",
+          "role": "drums",
+          "plugin": "DrumMachine",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/DrumMachine.vst3",
+          "preset": "Neo Soul Kit",
+          "default_slot": 3,
+          "volume": 0.85,
+          "pan": 0.5,
+          "midi_channel": 9,
+          "required": true
+        },
+        {
+          "id": "neosoul_pad",
+          "role": "pad",
+          "plugin": "StringEnsemble",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/StringEnsemble.vst3",
+          "preset": "Silk Pad",
+          "default_slot": 4,
+          "volume": 0.5,
+          "pan": 0.6,
+          "midi_channel": 0,
+          "required": false
+        },
+        {
+          "id": "neosoul_lead",
+          "role": "lead",
+          "plugin": "SynthLead",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/SynthLead.vst3",
+          "preset": "Mellow Lead",
+          "default_slot": 5,
+          "volume": 0.65,
+          "pan": 0.4,
+          "midi_channel": 0,
+          "required": false
+        }
+      ]
+    },
+    "afrobeats": {
+      "description": "Style Afrobeats avec percussions, synthés, basse puissante",
+      "mappings": [
+        {
+          "id": "afro_keys",
+          "role": "keys",
+          "plugin": "EPiano",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/EPiano.vst3",
+          "preset": "Bright Keys",
+          "default_slot": 1,
+          "volume": 0.75,
+          "pan": 0.4,
+          "midi_channel": 0,
+          "required": true
+        },
+        {
+          "id": "afro_bass",
+          "role": "bass",
+          "plugin": "BassPlugin",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/BassPlugin.vst3",
+          "preset": "808 Sub",
+          "default_slot": 2,
+          "volume": 1.0,
+          "pan": 0.5,
+          "midi_channel": 0,
+          "required": true
+        },
+        {
+          "id": "afro_drums",
+          "role": "drums",
+          "plugin": "DrumMachine",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/DrumMachine.vst3",
+          "preset": "Afro Kit",
+          "default_slot": 3,
+          "volume": 1.0,
+          "pan": 0.5,
+          "midi_channel": 9,
+          "required": true
+        },
+        {
+          "id": "afro_pad",
+          "role": "pad",
+          "plugin": "StringEnsemble",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/StringEnsemble.vst3",
+          "preset": "African Strings",
+          "default_slot": 4,
+          "volume": 0.55,
+          "pan": 0.65,
+          "midi_channel": 0,
+          "required": false
+        },
+        {
+          "id": "afro_lead",
+          "role": "lead",
+          "plugin": "SynthLead",
+          "format": "VST3",
+          "path": "/usr/lib/vst3/SynthLead.vst3",
+          "preset": "Afro Flute",
+          "default_slot": 5,
+          "volume": 0.7,
+          "pan": 0.35,
+          "midi_channel": 0,
+          "required": false
+        }
+      ]
+    }
+  },
+  "fallback": {
+    "enabled": true,
+    "synth": "fluidsynth",
+    "soundfont": "/usr/share/sounds/sf2/GeneralUser_GS.sf2",
+    "command": "fluidsynth -ni {soundfont} {midi_file} -F {output_wav} -r {sample_rate}",
+    "quality": "good"
+  },
+  "search_paths": [
+    "/usr/lib/vst3",
+    "/usr/lib/lv2",
+    "/usr/lib/ladspa",
+    "~/vst3",
+    "~/plugins"
+  ]
+}

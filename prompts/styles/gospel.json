@@ -1,0 +1,89 @@
+{
+  "name": "gospel",
+  "description": "Traditional and modern gospel music style",
+  "bpm_range": [90, 110],
+  "typical_bpm": 100,
+  "time_signatures": ["4/4", "3/4", "6/8"],
+  "preferred_time_signature": "4/4",
+  "typical_keys": ["C", "F", "G", "Bb", "D", "A", "E", "C minor", "F minor", "G minor"],
+  "preferred_chords": [
+    "maj7",
+    "min7",
+    "7",
+    "maj",
+    "min",
+    "sus4",
+    "add9",
+    "dim7"
+  ],
+  "avoid_chords": ["aug", "dim"],
+  "harmonic_rules": {
+    "use_extensions": true,
+    "extension_frequency": 0.7,
+    "voice_leading": "smooth",
+    "inversion_frequency": 0.3,
+    "close_voicing": 0.6,
+    "wide_voicing": 0.4
+  },
+  "rhythmic_rules": {
+    "swing": 0.08,
+    "syncopation": 0.4,
+    "triplet_feel": 0.2,
+    "shuffle": 0.1,
+    "groove_patterns": ["16th_note", "triplet", "syncopated"]
+  },
+  "instrumentation": {
+    "required": ["drums", "bass"],
+    "recommended": ["organ", "choir", "piano", "guitar", "brass"],
+    "typical_stack": [
+      {"role": "drums", "priority": 1, "volume": 1.0},
+      {"role": "bass", "priority": 1, "volume": 1.0},
+      {"role": "organ", "priority": 1, "volume": 0.8},
+      {"role": "choir", "priority": 2, "volume": 0.6},
+      {"role": "piano", "priority": 2, "volume": 0.7},
+      {"role": "guitar", "priority": 3, "volume": 0.5},
+      {"role": "brass", "priority": 3, "volume": 0.6}
+    ]
+  },
+  "mixing_rules": {
+    "drums_pan": "center",
+    "bass_pan": "center",
+    "keys_pan": "slight_right",
+    "choir_pan": "spread",
+    "reverb_amount": 0.4,
+    "delay_amount": 0.3,
+    "compression": "medium"
+  },
+  "structural_rules": {
+    "typical_structure": ["intro", "verse", "pre-chorus", "chorus", "verse", "pre-chorus", "chorus", "bridge", "chorus", "outro"],
+    "intro_length": [4, 8],
+    "verse_length": [8, 16],
+    "pre_chorus_length": [4, 8],
+    "chorus_length": [8, 16],
+    "bridge_length": [8, 12],
+    "outro_length": [4, 8],
+    "section_transitions": ["modulation", "drum_fill", "instrument_add"],
+    "build_intensity": true,
+    "release_tension": true
+  },
+  "dynamics": {
+    "intro": 0.3,
+    "verse": 0.5,
+    "pre_chorus": 0.7,
+    "chorus": 0.9,
+    "bridge": 0.8,
+    "outro": 0.4
+  },
+  "humanization": {
+    "timing_variation": 0.05,
+    "velocity_variation": 0.1,
+    "note_length_variation": 0.05,
+    "micro_pitch_variation": 0.02
+  },
+  "references": {
+    "artists": ["Kirk Franklin", "Fred Hammond", "Donnie McClurkin", "Tasha Cobbs"],
+    "classic_songs": ["Total Praise", "Blessed Assurance", "Oh Happy Day"],
+    "modern_influences": ["Elevation Worship", "Bethel Music", "Hillsong Worship"]
+  },
+  "tags": ["worship", "praise", "choir", "hammond", "soulful", "uplifting", "call_and_response"]
+}

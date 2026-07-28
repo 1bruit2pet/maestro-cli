@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Audio files (generated)
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.aiff
+*.aif
+
+# MIDI files (generated)
+*.mid
+*.midi
+
+# Carla files
+*.rck
+*.carxp
+*.carlaproject
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Project state (can be committed if needed, but usually regenerated)
+songs/projects/*/state/
+songs/projects/*/midi/
+songs/projects/*/audio/
+songs/projects/*/logs/
+
+# Temp files
+*.tmp
+*.temp
+.cache/
