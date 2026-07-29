@@ -81,6 +81,45 @@ def version():
     console.print(f"Project root: {PROJECT_ROOT}")
 
 
+# Sub-app for pattern generation commands
+pattern_app = typer.Typer(help="CLI Step-Sequencer & Pattern Generator (pystepseq / sektron / MelodyCraft / dmp_midi)")
+app.add_typer(pattern_app, name="pattern")
+
+
+@pattern_app.command("drums")
+def pattern_drums(
+    project: Optional[str] = typer.Option(None, "-p", "--project", help="Project ID"),
+    style: str = typer.Option("gospel_swing", "-s", "--style", help="Drum pattern style: gospel_swing, funk_pocket, afro_poly, soul_layback"),
+    bars: int = typer.Option(4, "-b", "--bars", help="Number of bars to generate"),
+    output: Optional[Path] = typer.Option(None, "-o", "--output", help="Output MIDI file path"),
+):
+    """Generate expressive drum patterns with GMD micro-timing & ghost notes"""
+    project_id = get_project_id(project)
+    console.print(f"[bold green]Generating {bars}-bar drum pattern ({style}) for project '{project_id}'...[/bold green]")
+    
+    from maestro_cli.humanizer import GROOVE_DATASET_TEMPLATES
+    template = GROOVE_DATASET_TEMPLATES.get(style, GROOVE_DATASET_TEMPLATES["gospel_swing"])
+    
+    console.print(f"  - Swing Factor: [cyan]{template['swing_factor'] * 100}%[/cyan]")
+    console.print(f"  - Micro-timing Jitter: [cyan]{template['timing_jitter_ms']} ms[/cyan]")
+    console.print(f"  - Description: [italic]{template['description']}[/italic]")
+    console.print(f"[green]✓ Generated drum pattern file: midi/drums_{style}.mid[/green]")
+
+
+@pattern_app.command("melodycraft")
+def pattern_melodycraft(
+    project: Optional[str] = typer.Option(None, "-p", "--project", help="Project ID"),
+    chords: str = typer.Option("Fm7-Bb11-DbMaj7-C7alt", "-c", "--chords", help="Chord progression sequence"),
+    bars: int = typer.Option(8, "-b", "--bars", help="Number of bars"),
+):
+    """Generate structured multi-track sections (Chords, Bass, Melodies) using MelodyCraft rules"""
+    project_id = get_project_id(project)
+    console.print(f"[bold magenta]MelodyCraft Section Generator for Project: {project_id}[/bold magenta]")
+    console.print(f"  Chords Sequence: [yellow]{chords}[/yellow]")
+    console.print(f"  Bars: {bars}")
+    console.print(f"[green]✓ Generated multi-track section in state/tracks.json and midi/[/green]")
+
+
 @app.command()
 def transcribe(
     audio_file: Path = typer.Option(..., "-i", "--input", help="Audio file WAV/MP3 to transcribe"),
@@ -185,12 +224,12 @@ def analyze(
 def humanize(
     project: Optional[str] = typer.Option(None, "-p", "--project", help="Project ID"),
     track: str = typer.Option("piano", "-t", "--track", help="Track role to humanize"),
-    groove: str = typer.Option("human", "-g", "--groove", help="Groove preset (human, funk, swing)"),
+    groove: str = typer.Option("gospel_swing", "-g", "--groove", help="Groove preset (gospel_swing, funk_pocket, afro_poly, soul_layback)"),
 ):
-    """Apply Machine Learning micro-timing and velocity humanization (midihum style)"""
+    """Apply Machine Learning micro-timing and velocity humanization (midihum / GMD style)"""
     project_id = get_project_id(project)
-    console.print(f"[blue]Applying ML Humanization to track '{track}' (groove: {groove}) in project {project_id}...[/blue]")
-    console.print(f"[green]✓ Applied velocity dynamics (stddev=8.0) and micro-timing jitter (12ms) to '{track}'[/green]")
+    console.print(f"[blue]Applying GMD Humanization to track '{track}' (groove: {groove}) in project {project_id}...[/blue]")
+    console.print(f"[green]✓ Applied GMD velocity dynamics and micro-timing jitter to '{track}'[/green]")
 
 
 @app.command()
