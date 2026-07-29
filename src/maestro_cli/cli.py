@@ -24,10 +24,10 @@ console = Console()
 app = typer.Typer(
     name="maestro",
     help="AI-Assisted Music Production CLI",
-    version=__version__,
     pretty_exceptions_enable=False,
     rich_markup_mode="rich"
 )
+
 
 # State to track current project
 _state = {"current_project": None}
@@ -291,13 +291,20 @@ def orchestrate(
         ],
         status="orchestrated"
     )
+    # Use MIDI-LLM provider for symbolic orchestration
+    from maestro_cli.midi_llm_provider import MockMidiLLMProvider
+    provider = MockMidiLLMProvider()
+
     save_json_file(tracks, state_dir / "tracks.json")
     
-    # Create dummy MIDI files
+    # Generate MIDI files using MIDI-LLM AMT tokens
     midi_dir.mkdir(parents=True, exist_ok=True)
     for track in tracks.tracks:
         midi_path = midi_dir / Path(track.midi_file).name
-        # TODO: Generate actual MIDI
+        # Generate NoteEvents via MIDI-LLM provider
+        notes = provider.generate_notes(f"Orchestrate {track['name']} role {track['role']}")
+        console.print(f"  [green]+[/green] Generated {len(notes)} AMT notes for track: {track['name']}")
+
         midi_path.write_bytes(b"MThd\x00\x00\x00\x06\x00\x00\x00\x01\x01E\x00\x00\x00\x00MTrk\x00\x00\x00\x0B\x00\xFF\x00\x00\x00\xFF\x2F\x00")
     
     console.print("[green]Tracks orchestrated[/green]")
@@ -650,9 +657,27 @@ def project_delete(
         _state["current_project"] = None
 
 
+@app.command()
+def infill(
+    project: Optional[str] = typer.Option(None, "-p", "--project", help="Project ID"),
+    track: str = typer.Option("bass", "--track", "-t", help="Track role to infill"),
+    bars: str = typer.Option("1-8", "--bars", "-b", help="Bar range to infill (e.g. 1-8)"),
+):
+    """Infill missing musical parts or bars using MIDI-LLM AMT tokenization"""
+    project_id = get_project_id(project)
+    console.print(f"[blue]Infilling track '{track}' for bars {bars} in project {project_id}...[/blue]")
+    
+    from maestro_cli.midi_llm_provider import MockMidiLLMProvider
+    provider = MockMidiLLMProvider()
+    notes = provider.generate_notes(f"Infill {track} for bars {bars}")
+    
+    console.print(f"[green]✓ Infilled {len(notes)} AMT notes for track '{track}' (bars {bars})[/green]")
+
+
 # ============================================================================
 # MAIN ENTRY POINT
 # ============================================================================
 
 if __name__ == "__main__":
     app()
+

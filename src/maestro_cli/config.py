@@ -5,7 +5,12 @@ Configuration management for Maestro CLI
 import os
 from pathlib import Path
 from typing import Optional
-from pydantic import BaseSettings, Field
+try:
+    from pydantic_settings import BaseSettings
+except ImportError:
+    from pydantic.v1 import BaseSettings
+from pydantic import Field
+
 
 
 class Settings(BaseSettings):
