@@ -1,4 +1,4 @@
-# Test Song
+# Gospel Test
 
 - **Style**: gospel
 - **BPM**: 92

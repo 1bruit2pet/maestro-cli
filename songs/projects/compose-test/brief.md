@@ -1,4 +1,4 @@
-# Test Song
+# Gospel Fusion
 
 - **Style**: gospel
 - **BPM**: 92

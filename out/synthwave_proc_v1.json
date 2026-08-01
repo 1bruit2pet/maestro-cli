@@ -1,0 +1,4942 @@
+{
+  "arrangement": {
+    "sections": [],
+    "variations": []
+  },
+  "loop_end": null,
+  "loop_start": null,
+  "mix": {},
+  "name": "synthwave_proc_v1",
+  "ppq": 480,
+  "render_end": null,
+  "render_start": null,
+  "schema_version": 11,
+  "swing_percent": 0,
+  "tempo_bpm": 128,
+  "tracks": [
+    {
+      "bus": "music",
+      "channel": 0,
+      "chorus": 0,
+      "clips": [
+        {
+          "pattern": "pat_InstrumentRole.KEYS_full",
+          "repeats": 1,
+          "start": 0
+        }
+      ],
+      "drum_kit": "trap_hard",
+      "glide_ticks": 0,
+      "humanize": {
+        "seed": 0,
+        "timing": 0,
+        "velocity": 0
+      },
+      "mute": false,
+      "name": "keys_main",
+      "notes": [],
+      "pan": 63,
+      "patterns": {
+        "pat_InstrumentRole.KEYS_full": {
+          "length": 61440,
+          "name": "pat_InstrumentRole.KEYS_full",
+          "notes": [
+            {
+              "duration": 720,
+              "pitch": 62,
+              "start": 0,
+              "velocity": 100
+            },
+            {
+              "duration": 240,
+              "pitch": 63,
+              "start": 720,
+              "velocity": 104
+            },
+            {
+              "duration": 240,
+              "pitch": 60,
+              "start": 1440,
+              "velocity": 77
+            },
+            {
+              "duration": 240,
+              "pitch": 58,
+              "start": 1920,
+              "velocity": 55
+            },
+            {
+              "duration": 240,
+              "pitch": 65,
+              "start": 2400,
+              "velocity": 98
+            },
+            {
+              "duration": 480,
+              "pitch": 67,
+              "start": 2880,
+              "velocity": 103
+            },
+            {
+              "duration": 720,
+              "pitch": 38,
+              "start": 3840,
+              "velocity": 85
+            },
+            {
+              "duration": 480,
+              "pitch": 43,
+              "start": 4800,
+              "velocity": 67
+            },
+            {
+              "duration": 480,
+              "pitch": 39,
+              "start": 5760,
+              "velocity": 82
+            },
+            {
+              "duration": 720,
+              "pitch": 72,
+              "start": 6720,
+              "velocity": 95
+            },
+            {
+              "duration": 480,
+              "pitch": 63,
+              "start": 7680,
+              "velocity": 61
+            },
+            {
+              "duration": 240,
+              "pitch": 75,
+              "start": 8400,
+              "velocity": 63
+            },
+            {
+              "duration": 240,
+              "pitch": 80,
+              "start": 10080,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 80,
+              "start": 10560,
+              "velocity": 69
+            },
+            {
+              "duration": 240,
+              "pitch": 80,
+              "start": 11520,
+              "velocity": 63
+            },
+            {
+              "duration": 240,
+              "pitch": 39,
+              "start": 12480,
+              "velocity": 62
+            },
+            {
+              "duration": 240,
+              "pitch": 44,
+              "start": 13200,
+              "velocity": 66
+            },
+            {
+              "duration": 240,
+              "pitch": 41,
+              "start": 13440,
+              "velocity": 91
+            },
+            {
+              "duration": 240,
+              "pitch": 39,
+              "start": 13920,
+              "velocity": 95
+            },
+            {
+              "duration": 480,
+              "pitch": 80,
+              "start": 14640,
+              "velocity": 76
+            },
+            {
+              "duration": 480,
+              "pitch": 63,
+              "start": 15360,
+              "velocity": 62
+            },
+            {
+              "duration": 480,
+              "pitch": 68,
+              "start": 17280,
+              "velocity": 92
+            },
+            {
+              "duration": 720,
+              "pitch": 56,
+              "start": 18240,
+              "velocity": 101
+            },
+            {
+              "duration": 720,
+              "pitch": 48,
+              "start": 18720,
+              "velocity": 101
+            },
+            {
+              "duration": 720,
+              "pitch": 43,
+              "start": 19200,
+              "velocity": 86
+            },
+            {
+              "duration": 240,
+              "pitch": 44,
+              "start": 20160,
+              "velocity": 96
+            },
+            {
+              "duration": 480,
+              "pitch": 41,
+              "start": 20640,
+              "velocity": 96
+            },
+            {
+              "duration": 240,
+              "pitch": 39,
+              "start": 21120,
+              "velocity": 96
+            },
+            {
+              "duration": 240,
+              "pitch": 41,
+              "start": 22080,
+              "velocity": 89
+            },
+            {
+              "duration": 240,
+              "pitch": 65,
+              "start": 22800,
+              "velocity": 61
+            },
+            {
+              "duration": 480,
+              "pitch": 43,
+              "start": 23040,
+              "velocity": 102
+            },
+            {
+              "duration": 480,
+              "pitch": 40,
+              "start": 23520,
+              "velocity": 83
+            },
+            {
+              "duration": 720,
+              "pitch": 38,
+              "start": 24000,
+              "velocity": 58
+            },
+            {
+              "duration": 480,
+              "pitch": 52,
+              "start": 24960,
+              "velocity": 73
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 25920,
+              "velocity": 55
+            },
+            {
+              "duration": 240,
+              "pitch": 48,
+              "start": 26880,
+              "velocity": 102
+            },
+            {
+              "duration": 240,
+              "pitch": 47,
+              "start": 27360,
+              "velocity": 72
+            },
+            {
+              "duration": 240,
+              "pitch": 43,
+              "start": 27840,
+              "velocity": 96
+            },
+            {
+              "duration": 240,
+              "pitch": 36,
+              "start": 28800,
+              "velocity": 65
+            },
+            {
+              "duration": 480,
+              "pitch": 36,
+              "start": 29280,
+              "velocity": 80
+            },
+            {
+              "duration": 480,
+              "pitch": 74,
+              "start": 29760,
+              "velocity": 82
+            },
+            {
+              "duration": 240,
+              "pitch": 74,
+              "start": 30240,
+              "velocity": 103
+            },
+            {
+              "duration": 240,
+              "pitch": 72,
+              "start": 30720,
+              "velocity": 96
+            },
+            {
+              "duration": 240,
+              "pitch": 72,
+              "start": 31440,
+              "velocity": 55
+            },
+            {
+              "duration": 240,
+              "pitch": 51,
+              "start": 31920,
+              "velocity": 84
+            },
+            {
+              "duration": 240,
+              "pitch": 55,
+              "start": 32400,
+              "velocity": 93
+            },
+            {
+              "duration": 240,
+              "pitch": 39,
+              "start": 32640,
+              "velocity": 69
+            },
+            {
+              "duration": 720,
+              "pitch": 72,
+              "start": 33360,
+              "velocity": 85
+            },
+            {
+              "duration": 240,
+              "pitch": 63,
+              "start": 34080,
+              "velocity": 70
+            },
+            {
+              "duration": 240,
+              "pitch": 48,
+              "start": 34560,
+              "velocity": 68
+            },
+            {
+              "duration": 480,
+              "pitch": 41,
+              "start": 35280,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 39,
+              "start": 36240,
+              "velocity": 94
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 37440,
+              "velocity": 65
+            },
+            {
+              "duration": 240,
+              "pitch": 48,
+              "start": 37920,
+              "velocity": 89
+            },
+            {
+              "duration": 240,
+              "pitch": 48,
+              "start": 38400,
+              "velocity": 58
+            },
+            {
+              "duration": 720,
+              "pitch": 51,
+              "start": 39120,
+              "velocity": 55
+            },
+            {
+              "duration": 240,
+              "pitch": 39,
+              "start": 39360,
+              "velocity": 103
+            },
+            {
+              "duration": 480,
+              "pitch": 41,
+              "start": 40320,
+              "velocity": 55
+            },
+            {
+              "duration": 240,
+              "pitch": 39,
+              "start": 41040,
+              "velocity": 85
+            },
+            {
+              "duration": 720,
+              "pitch": 46,
+              "start": 42240,
+              "velocity": 85
+            },
+            {
+              "duration": 240,
+              "pitch": 48,
+              "start": 43200,
+              "velocity": 81
+            },
+            {
+              "duration": 480,
+              "pitch": 56,
+              "start": 43680,
+              "velocity": 70
+            },
+            {
+              "duration": 240,
+              "pitch": 68,
+              "start": 44160,
+              "velocity": 56
+            },
+            {
+              "duration": 720,
+              "pitch": 68,
+              "start": 44640,
+              "velocity": 87
+            },
+            {
+              "duration": 480,
+              "pitch": 56,
+              "start": 45120,
+              "velocity": 104
+            },
+            {
+              "duration": 480,
+              "pitch": 61,
+              "start": 46080,
+              "velocity": 92
+            },
+            {
+              "duration": 240,
+              "pitch": 60,
+              "start": 47040,
+              "velocity": 61
+            },
+            {
+              "duration": 480,
+              "pitch": 63,
+              "start": 47520,
+              "velocity": 57
+            },
+            {
+              "duration": 240,
+              "pitch": 48,
+              "start": 48000,
+              "velocity": 99
+            },
+            {
+              "duration": 720,
+              "pitch": 61,
+              "start": 48960,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 58,
+              "start": 49920,
+              "velocity": 101
+            },
+            {
+              "duration": 720,
+              "pitch": 58,
+              "start": 50640,
+              "velocity": 58
+            },
+            {
+              "duration": 480,
+              "pitch": 56,
+              "start": 50880,
+              "velocity": 63
+            },
+            {
+              "duration": 240,
+              "pitch": 61,
+              "start": 51600,
+              "velocity": 77
+            },
+            {
+              "duration": 240,
+              "pitch": 41,
+              "start": 52800,
+              "velocity": 90
+            },
+            {
+              "duration": 240,
+              "pitch": 38,
+              "start": 53760,
+              "velocity": 89
+            },
+            {
+              "duration": 240,
+              "pitch": 45,
+              "start": 55440,
+              "velocity": 71
+            },
+            {
+              "duration": 720,
+              "pitch": 47,
+              "start": 56400,
+              "velocity": 94
+            },
+            {
+              "duration": 240,
+              "pitch": 74,
+              "start": 56640,
+              "velocity": 89
+            },
+            {
+              "duration": 240,
+              "pitch": 65,
+              "start": 58080,
+              "velocity": 64
+            },
+            {
+              "duration": 720,
+              "pitch": 67,
+              "start": 58560,
+              "velocity": 59
+            },
+            {
+              "duration": 240,
+              "pitch": 67,
+              "start": 59520,
+              "velocity": 81
+            },
+            {
+              "duration": 720,
+              "pitch": 77,
+              "start": 60240,
+              "velocity": 96
+            },
+            {
+              "duration": 720,
+              "pitch": 67,
+              "start": 60720,
+              "velocity": 102
+            }
+          ]
+        }
+      },
+      "program": 4,
+      "reverb": 0,
+      "sampler": null,
+      "sampler_preset": "default",
+      "solo": false,
+      "volume": 101
+    },
+    {
+      "bus": "music",
+      "channel": 1,
+      "chorus": 0,
+      "clips": [
+        {
+          "pattern": "pat_InstrumentRole.BASS_full",
+          "repeats": 1,
+          "start": 0
+        }
+      ],
+      "drum_kit": "trap_hard",
+      "glide_ticks": 0,
+      "humanize": {
+        "seed": 0,
+        "timing": 0,
+        "velocity": 0
+      },
+      "mute": false,
+      "name": "bass_main",
+      "notes": [],
+      "pan": 64,
+      "patterns": {
+        "pat_InstrumentRole.BASS_full": {
+          "length": 61440,
+          "name": "pat_InstrumentRole.BASS_full",
+          "notes": [
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 0,
+              "velocity": 100
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 1920,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 3840,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 5760,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 7680,
+              "velocity": 100
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 9600,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 11520,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 13440,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 15360,
+              "velocity": 100
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 17280,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 19200,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 21120,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 23040,
+              "velocity": 100
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 24960,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 26880,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 28800,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 30720,
+              "velocity": 100
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 32640,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 34560,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 36480,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 38400,
+              "velocity": 100
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 40320,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 42240,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 44160,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 46080,
+              "velocity": 100
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 48000,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 49920,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 51840,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 53760,
+              "velocity": 100
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 55680,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 57600,
+              "velocity": 60
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 59520,
+              "velocity": 60
+            }
+          ]
+        }
+      },
+      "program": 0,
+      "reverb": 0,
+      "sampler": "808",
+      "sampler_preset": "clean",
+      "solo": false,
+      "volume": 100
+    },
+    {
+      "bus": "music",
+      "channel": 2,
+      "chorus": 0,
+      "clips": [
+        {
+          "pattern": "pat_InstrumentRole.DRUMS_full",
+          "repeats": 1,
+          "start": 0
+        }
+      ],
+      "drum_kit": "trap_hard",
+      "glide_ticks": 0,
+      "humanize": {
+        "seed": 0,
+        "timing": 0,
+        "velocity": 0
+      },
+      "mute": false,
+      "name": "drums_main",
+      "notes": [],
+      "pan": 64,
+      "patterns": {
+        "pat_InstrumentRole.DRUMS_full": {
+          "length": 61440,
+          "name": "pat_InstrumentRole.DRUMS_full",
+          "notes": [
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 0,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 0,
+              "velocity": 110
+            },
+            {
+              "duration": 480,
+              "pitch": 0,
+              "role": "crash",
+              "start": 0,
+              "velocity": 90
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 259,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 480,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 480,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 739,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 960,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 960,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 1219,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 1440,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 1440,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 1699,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 1920,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 1920,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 2179,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 2400,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 2400,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 2659,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 2880,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 2880,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 3139,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 3360,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 3360,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 3619,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 3840,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 3840,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 4099,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 4320,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 4320,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 4579,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 4800,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 4800,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 5059,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 5280,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 5280,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 5539,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 5760,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 5760,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 6019,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 6240,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 6240,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 6499,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 6720,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 6720,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 6979,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 7200,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 7200,
+              "velocity": 80
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 7200,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 7459,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 7680,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 7680,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 7939,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 8160,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 8160,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 8419,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 8640,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 8640,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 8899,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 9120,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 9120,
+              "velocity": 80
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 9120,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 9379,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 9600,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 9600,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 9859,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 10080,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 10080,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 10339,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 10560,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 10560,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 10819,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 11040,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 11040,
+              "velocity": 80
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 11040,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 11299,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 11520,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 11520,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 11779,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 12000,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 12000,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 12259,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 12480,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 12480,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 12739,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 12960,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 12960,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 13219,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 13440,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 13440,
+              "velocity": 110
+            },
+            {
+              "duration": 480,
+              "pitch": 0,
+              "role": "crash",
+              "start": 13440,
+              "velocity": 90
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 13699,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 13920,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 13920,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 14179,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 14400,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 14400,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 14659,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 14880,
+              "velocity": 75
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "snare",
+              "start": 15000,
+              "velocity": 115
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "snare",
+              "start": 15120,
+              "velocity": 120
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 15139,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 15360,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 15360,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 15619,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 15840,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 15840,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 16099,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 16320,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 16320,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 16579,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 16800,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 16800,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 17059,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 17280,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 17280,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 17539,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 17760,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 17760,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 18019,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 18240,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 18240,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 18499,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 18720,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 18720,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 18979,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 19200,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 19200,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 19459,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 19680,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 19680,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 19939,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 20160,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 20160,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 20419,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 20640,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 20640,
+              "velocity": 80
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 20640,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 20899,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 21120,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 21120,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 21379,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 21600,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 21600,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 21859,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 22080,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 22080,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 22339,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 22560,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 22560,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 22819,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 23040,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 23040,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 23299,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 23520,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 23520,
+              "velocity": 80
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 23520,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 23779,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 24000,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 24000,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 24259,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 24480,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 24480,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 24739,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 24960,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 24960,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 25219,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 25440,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 25440,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 25699,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 25920,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 25920,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 26179,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 26400,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 26400,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 26659,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 26880,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 26880,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 27139,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 27360,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 27360,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 27619,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 27840,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 27840,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 28099,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 28320,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 28320,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 28579,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 28800,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 28800,
+              "velocity": 110
+            },
+            {
+              "duration": 480,
+              "pitch": 0,
+              "role": "crash",
+              "start": 28800,
+              "velocity": 90
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 29059,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 29280,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 29280,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 29539,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 29760,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 29760,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 30019,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 30240,
+              "velocity": 75
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "snare",
+              "start": 30360,
+              "velocity": 115
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "snare",
+              "start": 30480,
+              "velocity": 120
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 30499,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 30720,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 30720,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 30979,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 31200,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 31200,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 31459,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 31680,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 31680,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 31939,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 32160,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 32160,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 32419,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 32640,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 32640,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 32899,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 33120,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 33120,
+              "velocity": 80
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 33120,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 33379,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 33600,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 33600,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 33859,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 34080,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 34080,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 34339,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 34560,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 34560,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 34819,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 35040,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 35040,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 35299,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 35520,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 35520,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 35779,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 36000,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 36000,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 36259,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 36480,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 36480,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 36739,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 36960,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 36960,
+              "velocity": 80
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 36960,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 37219,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 37440,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 37440,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 37699,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 37920,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 37920,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 38179,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 38400,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 38400,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 38659,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 38880,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 38880,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 39139,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 39360,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 39360,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 39619,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 39840,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 39840,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 40099,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 40320,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 40320,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 40579,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 40800,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 40800,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 41059,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 41280,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 41280,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 41539,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 41760,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 41760,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 42019,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 42240,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 42240,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 42499,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 42720,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 42720,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 42979,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 43200,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 43200,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 43459,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 43680,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 43680,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 43939,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 44160,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 44160,
+              "velocity": 110
+            },
+            {
+              "duration": 480,
+              "pitch": 0,
+              "role": "crash",
+              "start": 44160,
+              "velocity": 90
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 44419,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 44640,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 44640,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 44899,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 45120,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 45120,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 45379,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 45600,
+              "velocity": 75
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "snare",
+              "start": 45720,
+              "velocity": 115
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "snare",
+              "start": 45840,
+              "velocity": 120
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 45859,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 46080,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 46080,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 46339,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 46560,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 46560,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 46819,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 47040,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 47040,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 47299,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 47520,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 47520,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 47779,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 48000,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 48000,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 48259,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 48480,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 48480,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 48739,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 48960,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 48960,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 49219,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 49440,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 49440,
+              "velocity": 80
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 49440,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 49699,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 49920,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 49920,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 50179,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 50400,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 50400,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 50659,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 50880,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 50880,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 51139,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 51360,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 51360,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 51619,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 51840,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 51840,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "openhat",
+              "start": 52099,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 52320,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 52320,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 52579,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 52800,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 52800,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 53059,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 53280,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 53280,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 53539,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 53760,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 53760,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 54019,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 54240,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 54240,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 54499,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 54720,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 54720,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 54979,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 55200,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 55200,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 55459,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 55680,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 55680,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 55939,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 56160,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 56160,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 56419,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 56640,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 56640,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 56899,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 57120,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 57120,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 57379,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 57600,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 57600,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 57859,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 58080,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 58080,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 58339,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 58560,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 58560,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 58819,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 59040,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 59040,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 59299,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 59520,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 59520,
+              "velocity": 110
+            },
+            {
+              "duration": 480,
+              "pitch": 0,
+              "role": "crash",
+              "start": 59520,
+              "velocity": 90
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 59779,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 60000,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "snare",
+              "start": 60000,
+              "velocity": 100
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 60259,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 60480,
+              "velocity": 75
+            },
+            {
+              "duration": 240,
+              "pitch": 0,
+              "role": "kick",
+              "start": 60480,
+              "velocity": 110
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 60739,
+              "velocity": 55
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 60960,
+              "velocity": 75
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "snare",
+              "start": 61080,
+              "velocity": 115
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "snare",
+              "start": 61200,
+              "velocity": 120
+            },
+            {
+              "duration": 120,
+              "pitch": 0,
+              "role": "hihat",
+              "start": 61219,
+              "velocity": 55
+            }
+          ]
+        }
+      },
+      "program": 0,
+      "reverb": 0,
+      "sampler": "drums",
+      "sampler_preset": "gm_basic",
+      "solo": false,
+      "volume": 100
+    },
+    {
+      "bus": "music",
+      "channel": 3,
+      "chorus": 0,
+      "clips": [
+        {
+          "pattern": "pat_InstrumentRole.PAD_full",
+          "repeats": 1,
+          "start": 0
+        }
+      ],
+      "drum_kit": "trap_hard",
+      "glide_ticks": 0,
+      "humanize": {
+        "seed": 0,
+        "timing": 0,
+        "velocity": 0
+      },
+      "mute": false,
+      "name": "pad_main",
+      "notes": [],
+      "pan": 63,
+      "patterns": {
+        "pat_InstrumentRole.PAD_full": {
+          "length": 61440,
+          "name": "pat_InstrumentRole.PAD_full",
+          "notes": [
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 0,
+              "velocity": 72
+            },
+            {
+              "duration": 480,
+              "pitch": 50,
+              "start": 480,
+              "velocity": 73
+            },
+            {
+              "duration": 480,
+              "pitch": 51,
+              "start": 960,
+              "velocity": 78
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 1440,
+              "velocity": 70
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 1920,
+              "velocity": 72
+            },
+            {
+              "duration": 480,
+              "pitch": 56,
+              "start": 2400,
+              "velocity": 76
+            },
+            {
+              "duration": 480,
+              "pitch": 58,
+              "start": 2880,
+              "velocity": 79
+            },
+            {
+              "duration": 480,
+              "pitch": 60,
+              "start": 3360,
+              "velocity": 93
+            },
+            {
+              "duration": 480,
+              "pitch": 62,
+              "start": 3840,
+              "velocity": 80
+            },
+            {
+              "duration": 480,
+              "pitch": 63,
+              "start": 4320,
+              "velocity": 79
+            },
+            {
+              "duration": 480,
+              "pitch": 65,
+              "start": 4800,
+              "velocity": 72
+            },
+            {
+              "duration": 480,
+              "pitch": 67,
+              "start": 5280,
+              "velocity": 85
+            },
+            {
+              "duration": 480,
+              "pitch": 68,
+              "start": 5760,
+              "velocity": 90
+            },
+            {
+              "duration": 480,
+              "pitch": 70,
+              "start": 6240,
+              "velocity": 93
+            },
+            {
+              "duration": 480,
+              "pitch": 72,
+              "start": 6720,
+              "velocity": 75
+            },
+            {
+              "duration": 480,
+              "pitch": 70,
+              "start": 7200,
+              "velocity": 74
+            },
+            {
+              "duration": 480,
+              "pitch": 68,
+              "start": 7680,
+              "velocity": 73
+            },
+            {
+              "duration": 480,
+              "pitch": 67,
+              "start": 8160,
+              "velocity": 88
+            },
+            {
+              "duration": 480,
+              "pitch": 65,
+              "start": 8640,
+              "velocity": 88
+            },
+            {
+              "duration": 480,
+              "pitch": 63,
+              "start": 9120,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 61,
+              "start": 9600,
+              "velocity": 84
+            },
+            {
+              "duration": 480,
+              "pitch": 60,
+              "start": 10080,
+              "velocity": 76
+            },
+            {
+              "duration": 480,
+              "pitch": 58,
+              "start": 10560,
+              "velocity": 97
+            },
+            {
+              "duration": 480,
+              "pitch": 56,
+              "start": 11040,
+              "velocity": 70
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 11520,
+              "velocity": 89
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 12000,
+              "velocity": 98
+            },
+            {
+              "duration": 480,
+              "pitch": 51,
+              "start": 12480,
+              "velocity": 78
+            },
+            {
+              "duration": 480,
+              "pitch": 49,
+              "start": 12960,
+              "velocity": 92
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 13440,
+              "velocity": 81
+            },
+            {
+              "duration": 480,
+              "pitch": 49,
+              "start": 13920,
+              "velocity": 89
+            },
+            {
+              "duration": 480,
+              "pitch": 51,
+              "start": 14400,
+              "velocity": 84
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 14880,
+              "velocity": 98
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 15360,
+              "velocity": 71
+            },
+            {
+              "duration": 480,
+              "pitch": 56,
+              "start": 15840,
+              "velocity": 97
+            },
+            {
+              "duration": 480,
+              "pitch": 58,
+              "start": 16320,
+              "velocity": 73
+            },
+            {
+              "duration": 480,
+              "pitch": 60,
+              "start": 16800,
+              "velocity": 88
+            },
+            {
+              "duration": 480,
+              "pitch": 61,
+              "start": 17280,
+              "velocity": 82
+            },
+            {
+              "duration": 480,
+              "pitch": 63,
+              "start": 17760,
+              "velocity": 77
+            },
+            {
+              "duration": 480,
+              "pitch": 65,
+              "start": 18240,
+              "velocity": 77
+            },
+            {
+              "duration": 480,
+              "pitch": 67,
+              "start": 18720,
+              "velocity": 73
+            },
+            {
+              "duration": 480,
+              "pitch": 68,
+              "start": 19200,
+              "velocity": 86
+            },
+            {
+              "duration": 480,
+              "pitch": 70,
+              "start": 19680,
+              "velocity": 77
+            },
+            {
+              "duration": 480,
+              "pitch": 72,
+              "start": 20160,
+              "velocity": 79
+            },
+            {
+              "duration": 480,
+              "pitch": 70,
+              "start": 20640,
+              "velocity": 77
+            },
+            {
+              "duration": 480,
+              "pitch": 68,
+              "start": 21120,
+              "velocity": 76
+            },
+            {
+              "duration": 480,
+              "pitch": 67,
+              "start": 21600,
+              "velocity": 95
+            },
+            {
+              "duration": 480,
+              "pitch": 65,
+              "start": 22080,
+              "velocity": 86
+            },
+            {
+              "duration": 480,
+              "pitch": 63,
+              "start": 22560,
+              "velocity": 93
+            },
+            {
+              "duration": 480,
+              "pitch": 62,
+              "start": 23040,
+              "velocity": 97
+            },
+            {
+              "duration": 480,
+              "pitch": 60,
+              "start": 23520,
+              "velocity": 86
+            },
+            {
+              "duration": 480,
+              "pitch": 59,
+              "start": 24000,
+              "velocity": 97
+            },
+            {
+              "duration": 480,
+              "pitch": 57,
+              "start": 24480,
+              "velocity": 89
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 24960,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 25440,
+              "velocity": 78
+            },
+            {
+              "duration": 480,
+              "pitch": 52,
+              "start": 25920,
+              "velocity": 97
+            },
+            {
+              "duration": 480,
+              "pitch": 50,
+              "start": 26400,
+              "velocity": 90
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 26880,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 50,
+              "start": 27360,
+              "velocity": 93
+            },
+            {
+              "duration": 480,
+              "pitch": 52,
+              "start": 27840,
+              "velocity": 91
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 28320,
+              "velocity": 95
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 28800,
+              "velocity": 75
+            },
+            {
+              "duration": 480,
+              "pitch": 57,
+              "start": 29280,
+              "velocity": 85
+            },
+            {
+              "duration": 480,
+              "pitch": 59,
+              "start": 29760,
+              "velocity": 80
+            },
+            {
+              "duration": 480,
+              "pitch": 60,
+              "start": 30240,
+              "velocity": 77
+            },
+            {
+              "duration": 480,
+              "pitch": 62,
+              "start": 30720,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 63,
+              "start": 31200,
+              "velocity": 75
+            },
+            {
+              "duration": 480,
+              "pitch": 65,
+              "start": 31680,
+              "velocity": 73
+            },
+            {
+              "duration": 480,
+              "pitch": 67,
+              "start": 32160,
+              "velocity": 73
+            },
+            {
+              "duration": 480,
+              "pitch": 68,
+              "start": 32640,
+              "velocity": 81
+            },
+            {
+              "duration": 480,
+              "pitch": 70,
+              "start": 33120,
+              "velocity": 95
+            },
+            {
+              "duration": 480,
+              "pitch": 72,
+              "start": 33600,
+              "velocity": 78
+            },
+            {
+              "duration": 480,
+              "pitch": 70,
+              "start": 34080,
+              "velocity": 94
+            },
+            {
+              "duration": 480,
+              "pitch": 68,
+              "start": 34560,
+              "velocity": 91
+            },
+            {
+              "duration": 480,
+              "pitch": 67,
+              "start": 35040,
+              "velocity": 93
+            },
+            {
+              "duration": 480,
+              "pitch": 65,
+              "start": 35520,
+              "velocity": 94
+            },
+            {
+              "duration": 480,
+              "pitch": 63,
+              "start": 36000,
+              "velocity": 92
+            },
+            {
+              "duration": 480,
+              "pitch": 62,
+              "start": 36480,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 60,
+              "start": 36960,
+              "velocity": 96
+            },
+            {
+              "duration": 480,
+              "pitch": 58,
+              "start": 37440,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 56,
+              "start": 37920,
+              "velocity": 83
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 38400,
+              "velocity": 88
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 38880,
+              "velocity": 90
+            },
+            {
+              "duration": 480,
+              "pitch": 51,
+              "start": 39360,
+              "velocity": 76
+            },
+            {
+              "duration": 480,
+              "pitch": 49,
+              "start": 39840,
+              "velocity": 91
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 40320,
+              "velocity": 90
+            },
+            {
+              "duration": 480,
+              "pitch": 49,
+              "start": 40800,
+              "velocity": 95
+            },
+            {
+              "duration": 480,
+              "pitch": 51,
+              "start": 41280,
+              "velocity": 79
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 41760,
+              "velocity": 82
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 42240,
+              "velocity": 77
+            },
+            {
+              "duration": 480,
+              "pitch": 56,
+              "start": 42720,
+              "velocity": 72
+            },
+            {
+              "duration": 480,
+              "pitch": 58,
+              "start": 43200,
+              "velocity": 84
+            },
+            {
+              "duration": 480,
+              "pitch": 60,
+              "start": 43680,
+              "velocity": 86
+            },
+            {
+              "duration": 480,
+              "pitch": 61,
+              "start": 44160,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 63,
+              "start": 44640,
+              "velocity": 92
+            },
+            {
+              "duration": 480,
+              "pitch": 65,
+              "start": 45120,
+              "velocity": 95
+            },
+            {
+              "duration": 480,
+              "pitch": 67,
+              "start": 45600,
+              "velocity": 82
+            },
+            {
+              "duration": 480,
+              "pitch": 68,
+              "start": 46080,
+              "velocity": 87
+            },
+            {
+              "duration": 480,
+              "pitch": 70,
+              "start": 46560,
+              "velocity": 81
+            },
+            {
+              "duration": 480,
+              "pitch": 72,
+              "start": 47040,
+              "velocity": 76
+            },
+            {
+              "duration": 480,
+              "pitch": 70,
+              "start": 47520,
+              "velocity": 95
+            },
+            {
+              "duration": 480,
+              "pitch": 68,
+              "start": 48000,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 67,
+              "start": 48480,
+              "velocity": 92
+            },
+            {
+              "duration": 480,
+              "pitch": 65,
+              "start": 48960,
+              "velocity": 87
+            },
+            {
+              "duration": 480,
+              "pitch": 63,
+              "start": 49440,
+              "velocity": 89
+            },
+            {
+              "duration": 480,
+              "pitch": 61,
+              "start": 49920,
+              "velocity": 78
+            },
+            {
+              "duration": 480,
+              "pitch": 60,
+              "start": 50400,
+              "velocity": 79
+            },
+            {
+              "duration": 480,
+              "pitch": 58,
+              "start": 50880,
+              "velocity": 74
+            },
+            {
+              "duration": 480,
+              "pitch": 56,
+              "start": 51360,
+              "velocity": 97
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 51840,
+              "velocity": 87
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 52320,
+              "velocity": 97
+            },
+            {
+              "duration": 480,
+              "pitch": 51,
+              "start": 52800,
+              "velocity": 90
+            },
+            {
+              "duration": 480,
+              "pitch": 49,
+              "start": 53280,
+              "velocity": 91
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 53760,
+              "velocity": 70
+            },
+            {
+              "duration": 480,
+              "pitch": 50,
+              "start": 54240,
+              "velocity": 82
+            },
+            {
+              "duration": 480,
+              "pitch": 52,
+              "start": 54720,
+              "velocity": 80
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 55200,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 55,
+              "start": 55680,
+              "velocity": 73
+            },
+            {
+              "duration": 480,
+              "pitch": 57,
+              "start": 56160,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 59,
+              "start": 56640,
+              "velocity": 87
+            },
+            {
+              "duration": 480,
+              "pitch": 60,
+              "start": 57120,
+              "velocity": 72
+            },
+            {
+              "duration": 480,
+              "pitch": 62,
+              "start": 57600,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 64,
+              "start": 58080,
+              "velocity": 96
+            },
+            {
+              "duration": 480,
+              "pitch": 65,
+              "start": 58560,
+              "velocity": 82
+            },
+            {
+              "duration": 480,
+              "pitch": 67,
+              "start": 59040,
+              "velocity": 73
+            },
+            {
+              "duration": 480,
+              "pitch": 69,
+              "start": 59520,
+              "velocity": 71
+            },
+            {
+              "duration": 480,
+              "pitch": 71,
+              "start": 60000,
+              "velocity": 99
+            },
+            {
+              "duration": 480,
+              "pitch": 72,
+              "start": 60480,
+              "velocity": 82
+            },
+            {
+              "duration": 480,
+              "pitch": 71,
+              "start": 60960,
+              "velocity": 99
+            }
+          ]
+        }
+      },
+      "program": 89,
+      "reverb": 0,
+      "sampler": null,
+      "sampler_preset": "default",
+      "solo": false,
+      "volume": 101
+    },
+    {
+      "bus": "music",
+      "channel": 4,
+      "chorus": 0,
+      "clips": [
+        {
+          "pattern": "pat_InstrumentRole.LEAD_full",
+          "repeats": 1,
+          "start": 0
+        }
+      ],
+      "drum_kit": "trap_hard",
+      "glide_ticks": 0,
+      "humanize": {
+        "seed": 0,
+        "timing": 0,
+        "velocity": 0
+      },
+      "mute": false,
+      "name": "lead_main",
+      "notes": [],
+      "pan": 63,
+      "patterns": {
+        "pat_InstrumentRole.LEAD_full": {
+          "length": 61440,
+          "name": "pat_InstrumentRole.LEAD_full",
+          "notes": [
+            {
+              "duration": 240,
+              "pitch": 63,
+              "start": 480,
+              "velocity": 93
+            },
+            {
+              "duration": 240,
+              "pitch": 65,
+              "start": 960,
+              "velocity": 88
+            },
+            {
+              "duration": 480,
+              "pitch": 60,
+              "start": 1920,
+              "velocity": 71
+            },
+            {
+              "duration": 240,
+              "pitch": 63,
+              "start": 2880,
+              "velocity": 83
+            },
+            {
+              "duration": 720,
+              "pitch": 53,
+              "start": 3600,
+              "velocity": 58
+            },
+            {
+              "duration": 720,
+              "pitch": 70,
+              "start": 4560,
+              "velocity": 69
+            },
+            {
+              "duration": 480,
+              "pitch": 67,
+              "start": 5760,
+              "velocity": 89
+            },
+            {
+              "duration": 720,
+              "pitch": 58,
+              "start": 6720,
+              "velocity": 87
+            },
+            {
+              "duration": 240,
+              "pitch": 39,
+              "start": 7680,
+              "velocity": 86
+            },
+            {
+              "duration": 720,
+              "pitch": 37,
+              "start": 8640,
+              "velocity": 92
+            },
+            {
+              "duration": 240,
+              "pitch": 44,
+              "start": 9360,
+              "velocity": 67
+            },
+            {
+              "duration": 240,
+              "pitch": 49,
+              "start": 9840,
+              "velocity": 95
+            },
+            {
+              "duration": 720,
+              "pitch": 53,
+              "start": 10320,
+              "velocity": 70
+            },
+            {
+              "duration": 240,
+              "pitch": 61,
+              "start": 10800,
+              "velocity": 57
+            },
+            {
+              "duration": 480,
+              "pitch": 46,
+              "start": 11520,
+              "velocity": 91
+            },
+            {
+              "duration": 480,
+              "pitch": 39,
+              "start": 12480,
+              "velocity": 101
+            },
+            {
+              "duration": 240,
+              "pitch": 36,
+              "start": 13440,
+              "velocity": 66
+            },
+            {
+              "duration": 720,
+              "pitch": 53,
+              "start": 14640,
+              "velocity": 66
+            },
+            {
+              "duration": 240,
+              "pitch": 51,
+              "start": 15360,
+              "velocity": 84
+            },
+            {
+              "duration": 240,
+              "pitch": 53,
+              "start": 15840,
+              "velocity": 84
+            },
+            {
+              "duration": 480,
+              "pitch": 79,
+              "start": 16320,
+              "velocity": 98
+            },
+            {
+              "duration": 240,
+              "pitch": 77,
+              "start": 17040,
+              "velocity": 89
+            },
+            {
+              "duration": 240,
+              "pitch": 72,
+              "start": 17280,
+              "velocity": 97
+            },
+            {
+              "duration": 720,
+              "pitch": 80,
+              "start": 18240,
+              "velocity": 86
+            },
+            {
+              "duration": 240,
+              "pitch": 77,
+              "start": 18720,
+              "velocity": 87
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 19200,
+              "velocity": 101
+            },
+            {
+              "duration": 720,
+              "pitch": 53,
+              "start": 19680,
+              "velocity": 67
+            },
+            {
+              "duration": 720,
+              "pitch": 56,
+              "start": 20160,
+              "velocity": 63
+            },
+            {
+              "duration": 480,
+              "pitch": 80,
+              "start": 21120,
+              "velocity": 85
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 21840,
+              "velocity": 61
+            },
+            {
+              "duration": 720,
+              "pitch": 58,
+              "start": 22320,
+              "velocity": 74
+            },
+            {
+              "duration": 720,
+              "pitch": 55,
+              "start": 23040,
+              "velocity": 98
+            },
+            {
+              "duration": 240,
+              "pitch": 67,
+              "start": 24720,
+              "velocity": 80
+            },
+            {
+              "duration": 480,
+              "pitch": 79,
+              "start": 25920,
+              "velocity": 95
+            },
+            {
+              "duration": 240,
+              "pitch": 62,
+              "start": 26400,
+              "velocity": 101
+            },
+            {
+              "duration": 480,
+              "pitch": 43,
+              "start": 26880,
+              "velocity": 69
+            },
+            {
+              "duration": 240,
+              "pitch": 43,
+              "start": 27600,
+              "velocity": 63
+            },
+            {
+              "duration": 480,
+              "pitch": 79,
+              "start": 27840,
+              "velocity": 99
+            },
+            {
+              "duration": 240,
+              "pitch": 45,
+              "start": 28800,
+              "velocity": 59
+            },
+            {
+              "duration": 240,
+              "pitch": 47,
+              "start": 29760,
+              "velocity": 84
+            },
+            {
+              "duration": 240,
+              "pitch": 43,
+              "start": 30240,
+              "velocity": 55
+            },
+            {
+              "duration": 480,
+              "pitch": 39,
+              "start": 30720,
+              "velocity": 64
+            },
+            {
+              "duration": 720,
+              "pitch": 38,
+              "start": 31440,
+              "velocity": 92
+            },
+            {
+              "duration": 240,
+              "pitch": 74,
+              "start": 32400,
+              "velocity": 78
+            },
+            {
+              "duration": 720,
+              "pitch": 60,
+              "start": 33360,
+              "velocity": 98
+            },
+            {
+              "duration": 240,
+              "pitch": 67,
+              "start": 33840,
+              "velocity": 62
+            },
+            {
+              "duration": 240,
+              "pitch": 82,
+              "start": 35520,
+              "velocity": 78
+            },
+            {
+              "duration": 240,
+              "pitch": 39,
+              "start": 36720,
+              "velocity": 79
+            },
+            {
+              "duration": 240,
+              "pitch": 46,
+              "start": 37440,
+              "velocity": 104
+            },
+            {
+              "duration": 240,
+              "pitch": 49,
+              "start": 38400,
+              "velocity": 100
+            },
+            {
+              "duration": 480,
+              "pitch": 53,
+              "start": 39360,
+              "velocity": 101
+            },
+            {
+              "duration": 240,
+              "pitch": 67,
+              "start": 40320,
+              "velocity": 96
+            },
+            {
+              "duration": 240,
+              "pitch": 37,
+              "start": 41280,
+              "velocity": 80
+            },
+            {
+              "duration": 240,
+              "pitch": 39,
+              "start": 42000,
+              "velocity": 100
+            },
+            {
+              "duration": 480,
+              "pitch": 41,
+              "start": 42480,
+              "velocity": 94
+            },
+            {
+              "duration": 240,
+              "pitch": 39,
+              "start": 44160,
+              "velocity": 92
+            },
+            {
+              "duration": 480,
+              "pitch": 37,
+              "start": 45120,
+              "velocity": 79
+            },
+            {
+              "duration": 240,
+              "pitch": 36,
+              "start": 46080,
+              "velocity": 55
+            },
+            {
+              "duration": 720,
+              "pitch": 48,
+              "start": 47040,
+              "velocity": 94
+            },
+            {
+              "duration": 480,
+              "pitch": 49,
+              "start": 47760,
+              "velocity": 65
+            },
+            {
+              "duration": 240,
+              "pitch": 36,
+              "start": 48960,
+              "velocity": 74
+            },
+            {
+              "duration": 240,
+              "pitch": 84,
+              "start": 49440,
+              "velocity": 58
+            },
+            {
+              "duration": 480,
+              "pitch": 77,
+              "start": 49920,
+              "velocity": 80
+            },
+            {
+              "duration": 480,
+              "pitch": 84,
+              "start": 50880,
+              "velocity": 78
+            },
+            {
+              "duration": 240,
+              "pitch": 84,
+              "start": 51840,
+              "velocity": 83
+            },
+            {
+              "duration": 480,
+              "pitch": 72,
+              "start": 52560,
+              "velocity": 61
+            },
+            {
+              "duration": 240,
+              "pitch": 41,
+              "start": 53760,
+              "velocity": 92
+            },
+            {
+              "duration": 240,
+              "pitch": 62,
+              "start": 54240,
+              "velocity": 88
+            },
+            {
+              "duration": 480,
+              "pitch": 48,
+              "start": 54720,
+              "velocity": 82
+            },
+            {
+              "duration": 720,
+              "pitch": 83,
+              "start": 55200,
+              "velocity": 91
+            },
+            {
+              "duration": 240,
+              "pitch": 79,
+              "start": 55680,
+              "velocity": 84
+            },
+            {
+              "duration": 240,
+              "pitch": 83,
+              "start": 56400,
+              "velocity": 86
+            },
+            {
+              "duration": 240,
+              "pitch": 83,
+              "start": 56640,
+              "velocity": 85
+            },
+            {
+              "duration": 480,
+              "pitch": 84,
+              "start": 57600,
+              "velocity": 84
+            },
+            {
+              "duration": 240,
+              "pitch": 60,
+              "start": 58320,
+              "velocity": 72
+            },
+            {
+              "duration": 240,
+              "pitch": 47,
+              "start": 59520,
+              "velocity": 59
+            },
+            {
+              "duration": 480,
+              "pitch": 50,
+              "start": 60720,
+              "velocity": 100
+            },
+            {
+              "duration": 240,
+              "pitch": 43,
+              "start": 61200,
+              "velocity": 59
+            }
+          ]
+        }
+      },
+      "program": 40,
+      "reverb": 0,
+      "sampler": null,
+      "sampler_preset": "default",
+      "solo": false,
+      "volume": 101
+    }
+  ]
+}

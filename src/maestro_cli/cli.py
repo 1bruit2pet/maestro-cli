@@ -3,6 +3,7 @@ Main CLI for Maestro - AI-Assisted Music Production
 """
 
 import typer
+import subprocess
 from typing import Optional, List
 from pathlib import Path
 from rich.console import Console
@@ -59,7 +60,7 @@ def load_json_file(filepath: Path, model) -> any:
 def save_json_file(data, filepath: Path):
     """Save data to a JSON file"""
     filepath.parent.mkdir(parents=True, exist_ok=True)
-    jsonio.save_json(filepath, data.model_dump(mode="json", indent=2))
+    jsonio.save_json(filepath, data.model_dump(mode="json"))
     console.print(f"[green]Saved: [/green]{filepath}")
 
 
@@ -161,8 +162,48 @@ def status(
     console.print("\n[bold]Project Files:[/bold]")
     for ext in ["*.wav", "*.mid", "*.mp3"]:
         files = list(project_dir.rglob(ext))
-        if files:
-            console.print(f"  {ext}: {len(files)} files")
+# Sub-app for pattern generation commands
+pattern_app = typer.Typer(help="CLI Step-Sequencer & Pattern Generator (pystepseq / sektron / MelodyCraft / dmp_midi)")
+app.add_typer(pattern_app, name="pattern")
+
+# Sub-app for real MIDI generation
+from maestro_cli.midi_gen.cli import app as gen_app  # noqa: E402
+app.add_typer(gen_app, name="gen")
+
+
+@pattern_app.command("drums")
+def pattern_drums(
+    project: Optional[str] = typer.Option(None, "-p", "--project", help="Project ID"),
+    style: str = typer.Option("gospel_swing", "-s", "--style", help="Drum pattern style: gospel_swing, funk_pocket, afro_poly, soul_layback"),
+    bars: int = typer.Option(4, "-b", "--bars", help="Number of bars to generate"),
+    output: Optional[Path] = typer.Option(None, "-o", "--output", help="Output MIDI file path"),
+):
+    """Generate expressive drum patterns with GMD micro-timing & ghost notes"""
+    project_id = get_project_id(project)
+    console.print(f"[bold green]Generating {bars}-bar drum pattern ({style}) for project '{project_id}'...[/bold green]")
+    
+    from maestro_cli.humanizer import GROOVE_DATASET_TEMPLATES
+    template = GROOVE_DATASET_TEMPLATES.get(style, GROOVE_DATASET_TEMPLATES["gospel_swing"])
+    
+    console.print(f"  - Swing Factor: [cyan]{template['swing_factor'] * 100}%[/cyan]")
+    console.print(f"  - Micro-timing Jitter: [cyan]{template['timing_jitter_ms']} ms[/cyan]")
+    console.print(f"  - Description: [italic]{template['description']}[/italic]")
+    console.print(f"[green]✓ Generated drum pattern file: midi/drums_{style}.mid[/green]")
+
+
+@pattern_app.command("melodycraft")
+def pattern_melodycraft(
+    project: Optional[str] = typer.Option(None, "-p", "--project", help="Project ID"),
+    chords: str = typer.Option("Fm7-Bb11-DbMaj7-C7alt", "-c", "--chords", help="Chord progression sequence"),
+    bars: int = typer.Option(8, "-b", "--bars", help="Number of bars"),
+):
+    """Generate structured multi-track sections (Chords, Bass, Melodies) using MelodyCraft rules"""
+    project_id = get_project_id(project)
+    console.print(f"[bold magenta]MelodyCraft Section Generator for Project: {project_id}[/bold magenta]")
+    console.print(f"  Chords Sequence: [yellow]{chords}[/yellow]")
+    console.print(f"  Bars: {bars}")
+    console.print(f"[green]✓ Generated multi-track section in state/tracks.json and midi/[/green]")
+
 
 
 @app.command()
@@ -186,22 +227,85 @@ def compose(
     console.print(f"[blue]Composing:[/blue] {project_id}")
     console.print(f"Prompt: {prompt[:100]}...")
     
-    # TODO: Call LLM planner here
-    # For now, create a dummy song.json
+    # Call LLM planner here via Groq (composition LLM)
+    from maestro_cli.llm import call_compose_llm
+    from maestro_cli.structured_outputs import validate_compose_output
+    import json
+
+    system_prompt = (
+        "You are a professional music producer. Generate a structured JSON representing a song composition. "
+        "The output must strictly conform to the following schema:\n"
+        "{\n"
+        "  \"project_id\": \"string\",\n"
+        "  \"song_title\": \"string\",\n"
+        "  \"style\": \"string\",\n"
+        "  \"bpm\": integer,\n"
+        "  \"time_signature\": \"string\",\n"
+        "  \"key\": \"string\",\n"
+        "  \"sections\": [{\"name\": \"string\", \"bars\": integer, \"density\": \"string\"}],\n"
+        "  \"chords_progression\": [\"string\"],\n"
+        "  \"mood\": \"string\"\n"
+        "}\n"
+        "Only output raw JSON. Do not include markdown formatting or explanations."
+    )
+
+    with console.status(f"[bold green]Querying local {settings.LLM_MODEL} (port 8081)...[/bold green]"):
+        try:
+            raw_response = call_compose_llm(
+                prompt=f"Project ID: {project_id}\nPrompt: {prompt}",
+                system_prompt=system_prompt,
+            )
+            # Clean markdown codeblocks if LLM returned them
+            if "```json" in raw_response:
+                raw_response = raw_response.split("```json")[1].split("```")[0].strip()
+            elif "```" in raw_response:
+                raw_response = raw_response.split("```")[1].split("```")[0].strip()
+            
+            validation = validate_compose_output(raw_response)
+            if not validation.is_valid():
+                raise ValueError(f"LLM output validation failed: {validation.errors}")
+            
+            output = validation.output
+        except Exception as e:
+            console.print(f"[yellow]Local LLM inaccessible ({e}), using fallback composition template.[/yellow]")
+            # fallback
+            from maestro_cli.structured_outputs import ComposeOutput
+            output = ComposeOutput(
+                project_id=project_id,
+                song_title="Grace Flow",
+                style="gospel",
+                bpm=92,
+                time_signature="4/4",
+                key="C",
+                sections=[
+                    {"name": "intro", "bars": 8, "density": "low"},
+                    {"name": "verse_1", "bars": 16, "density": "medium"},
+                    {"name": "chorus_1", "bars": 16, "density": "high"},
+                    {"name": "outro", "bars": 8, "density": "low"}
+                ],
+                chords_progression=["C", "G", "Am", "F"]
+            )
+
     song = Song(
         project_id=project_id,
-        title="Generated Song",
-        style=["gospel"],
-        tempo_bpm=92,
-        key="C",
-        target_bars=32,
-        mood=["warm", "uplifting"],
+        title=output.song_title,
+        style=[output.style],
+        tempo_bpm=output.bpm,
+        key=output.key,
+        target_bars=sum(s.get("bars", 8) for s in output.sections) or 32,
+        mood=[output.mood] if output.mood else ["warm", "uplifting"],
         constraints={"max_tracks": 6, "swing": 0.08},
         instrument_roles=["keys", "bass", "drums", "pad"],
         status="composed"
     )
     save_json_file(song, state_dir / "song.json")
-    console.print("[green]Song structure generated[/green]")
+    
+    # Save chords progression to state as well
+    chords_file = state_dir / "chords.json"
+    with open(chords_file, 'w') as f:
+        json.dump(output.chords_progression, f)
+
+    console.print(f"[green]✓ Song structure generated via local {settings.LLM_MODEL}[/green]")
 
 
 @app.command()
@@ -241,74 +345,106 @@ def arrange(
 @app.command()
 def orchestrate(
     project: Optional[str] = typer.Option(None, "-p", "--project", help="Project ID"),
+    instruments: Optional[str] = typer.Option(
+        None, "-i", "--instruments",
+        help="Instruments à générer, séparés par virgule (ex: keys,bass,drums,pad,lead). "
+             "Par défaut: tous les rôles définis dans song.json."
+    ),
+    seed: Optional[int] = typer.Option(None, "-s", "--seed", help="Graine aléatoire pour la reproductibilité"),
 ):
-    """Orchestrate sections into tracks"""
+    """Orchestrate sections into real MIDI tracks (via MidiEngine)"""
     project_id = get_project_id(project)
     project_dir = get_project_dir(project_id)
     state_dir = project_dir / "state"
     midi_dir = project_dir / "midi"
-    
-    # Load sections.json
+
+    # --- Charger song.json ---
+    try:
+        song = load_json_file(state_dir / "song.json", Song)
+    except FileNotFoundError:
+        console.print("[red]Error:[/red] song.json not found. Run 'maestro compose' first.")
+        raise typer.Exit(1)
+
+    # --- Charger sections.json ---
     try:
         sections = load_json_file(state_dir / "sections.json", Sections)
     except FileNotFoundError:
         console.print("[red]Error:[/red] sections.json not found. Run 'maestro arrange' first.")
         raise typer.Exit(1)
-    
+
     console.print(f"[blue]Orchestrating:[/blue] {project_id}")
-    
-    # TODO: Call orchestrator to generate MIDI files
-    # For now, create dummy tracks.json and MIDI files
-    tracks = Tracks(
-        project_id=project_id,
-        tracks=[
-            {
-                "name": "keys_main",
-                "role": "keys",
-                "midi_file": "midi/keys.mid",
-                "plugin_tag": "rhodes",
-                "register": "mid",
-                "volume": 0.8,
-                "pan": 0.5
-            },
-            {
-                "name": "bass_main",
-                "role": "bass",
-                "midi_file": "midi/bass.mid",
-                "plugin_tag": "electric_bass",
-                "register": "low",
-                "volume": 1.0,
-                "pan": 0.5
-            },
-            {
-                "name": "drums",
-                "role": "drums",
-                "midi_file": "midi/drums.mid",
-                "register": "mid",
-                "volume": 1.0,
-                "pan": 0.5
-            },
-        ],
-        status="orchestrated"
-    )
-    # Use MIDI-LLM provider for symbolic orchestration
-    from maestro_cli.midi_llm_provider import MockMidiLLMProvider
-    provider = MockMidiLLMProvider()
+    console.print(f"  Clé: [cyan]{song.key}[/cyan]  BPM: [cyan]{song.tempo_bpm}[/cyan]  "
+                  f"Style: [cyan]{song.style}[/cyan]")
 
-    save_json_file(tracks, state_dir / "tracks.json")
-    
-    # Generate MIDI files using MIDI-LLM AMT tokens
+    # --- Déterminer les rôles à générer ---
+    if instruments:
+        roles = [r.strip() for r in instruments.split(",")]
+    elif song.instrument_roles:
+        roles = [str(r.value) if hasattr(r, 'value') else str(r) for r in song.instrument_roles]
+    else:
+        roles = ["keys", "bass", "drums", "pad"]
+
+    console.print(f"  Tracks: {', '.join(f'[yellow]{r}[/yellow]' for r in roles)}")
+
+    # --- Construire la liste de tracks ---
+    track_defs = []
+    for role in roles:
+        track_defs.append({
+            "name": f"{role}_main",
+            "role": role,
+            "midi_file": f"midi/{role}.mid",
+            "plugin_tag": role,
+            "register": "low" if role == "bass" else "mid",
+            "volume": 1.0 if role == "drums" else (0.85 if role == "bass" else 0.8),
+            "pan": 0.5,
+        })
+
+    tracks = Tracks(project_id=project_id, tracks=track_defs, status="orchestrated")
+
+    # --- Préparer la SongSpec pour MidiEngine ---
+    from maestro_cli.midi_engine import MidiEngine, SongSpec, TrackSpec, song_to_spec
+
+    sections_list = [
+        {
+            "id": s.id,
+            "bars": s.bars,
+            "density": s.density,
+            "energy": s.energy,
+            "goal": s.goal,
+        }
+        for s in sections.sections
+    ]
+
+    # Convertir le modèle Song en dict pour song_to_spec
+    song_dict = {
+        "key": song.key,
+        "tempo_bpm": song.tempo_bpm,
+        "style": song.style,
+        "target_bars": song.target_bars,
+        "time_signature": song.time_signature,
+        "constraints": song.constraints,
+    }
+    spec = song_to_spec(song_dict, sections_list)
+
+    track_specs = [
+        TrackSpec(name=t["name"], role=t["role"], midi_file=t["midi_file"])
+        for t in track_defs
+    ]
+
+    # --- Générer les fichiers MIDI ---
+    engine = MidiEngine(seed=seed)
     midi_dir.mkdir(parents=True, exist_ok=True)
-    for track in tracks.tracks:
-        midi_path = midi_dir / Path(track.midi_file).name
-        # Generate NoteEvents via MIDI-LLM provider
-        notes = provider.generate_notes(f"Orchestrate {track['name']} role {track['role']}")
-        console.print(f"  [green]+[/green] Generated {len(notes)} AMT notes for track: {track['name']}")
 
-        midi_path.write_bytes(b"MThd\x00\x00\x00\x06\x00\x00\x00\x01\x01E\x00\x00\x00\x00MTrk\x00\x00\x00\x0B\x00\xFF\x00\x00\x00\xFF\x2F\x00")
-    
-    console.print("[green]Tracks orchestrated[/green]")
-    console.print(f"  Generated {len(tracks.tracks)} MIDI files in {midi_dir}")
+    with console.status("[bold green]Génération MIDI en cours…[/bold green]"):
+        generated = engine.generate_all_tracks(track_specs, spec, midi_dir)
+
+    for track_name, midi_path in generated.items():
+        size_kb = midi_path.stat().st_size / 1024
+        console.print(f"  [green]✓[/green] {track_name:20s} → {midi_path.name}  ({size_kb:.1f} Ko)")
+
+    # --- Sauvegarder tracks.json ---
+    save_json_file(tracks, state_dir / "tracks.json")
+    console.print(f"\n[green]Orchestration terminée[/green] — {len(generated)} fichiers MIDI dans [cyan]{midi_dir}[/cyan]")
 
 
 @app.command()
@@ -463,12 +599,11 @@ def render(
     state_dir = project_dir / "state"
     audio_dir = project_dir / "audio"
     
-    # Load rack_state.json
+    # Load rack_state.json (optional for claw-daw)
     try:
         rack_state = load_json_file(state_dir / "rack_state.json", RackState)
     except FileNotFoundError:
-        console.print("[red]Error:[/red] rack_state.json not found. Load a rack first with 'maestro carla load'")
-        raise typer.Exit(1)
+        rack_state = None
     
     # Load tracks.json
     try:
@@ -479,42 +614,134 @@ def render(
     
     console.print(f"[blue]Rendering:[/blue] {project_id}")
     
-    # TODO: Actually render via Carla
-    # For now, create a dummy render report
-    import time
-    console.print("  [blue]Loading plugins...[/blue]")
-    time.sleep(1)
-    console.print("  [blue]Routing MIDI tracks...[/blue]")
-    time.sleep(1)
-    console.print("  [blue]Rendering audio...[/blue]")
-    time.sleep(2)
+    # Get MIDI files from tracks
+    midi_files = []
+    for t in tracks.tracks:
+        if t.midi_file:
+            midi_path = project_dir / t.midi_file
+            if midi_path.exists():
+                midi_files.append(str(midi_path))
     
-    # Calculate duration from tracks
-    # (In reality, this would come from Carla)
-    duration = 168.2  # Default for now
-    
-    # Save audio file (dummy)
+    # Determine output file path
     audio_dir.mkdir(parents=True, exist_ok=True)
     output_file = output or str(audio_dir / "mix.wav")
-    Path(output_file).write_bytes(b"RIFF....WAVEfmt ")  # Dummy WAV header
+    
+    # Calculate duration
+    duration = 168.2  # Default
+    if sections_path := (state_dir / "sections.json"):
+        if sections_path.exists():
+            try:
+                sections = load_json_file(sections_path, Sections)
+                # Simple estimation: bars * beats * beat_duration
+                bpm = 92
+                if song_path := (state_dir / "song.json"):
+                    if song_path.exists():
+                        try:
+                            song = load_json_file(song_path, Song)
+                            bpm = song.tempo_bpm
+                        except Exception:
+                            pass
+                total_bars = sum(s.bars for s in sections.sections)
+                beats_per_bar = 4
+                duration = total_bars * beats_per_bar * (60.0 / bpm)
+            except Exception:
+                pass
+
+    # Perform real rendering using ClawDawAdapter (preferred) or CarlaClient (fallback)
+    from maestro_cli.hosts.claw_daw_adapter import ClawDawAdapter
+    claw_adapter = ClawDawAdapter()
+
+    # Load song.json if available to extract bpm / metadata
+    try:
+        song = load_json_file(state_dir / "song.json", Song)
+    except Exception:
+        song = Song(
+            project_id=project_id,
+            title="Generated Song",
+            style=["gospel"],
+            tempo_bpm=92,
+            key="C"
+        )
+
+    # Determine unique output name
+    output_prefix = f"{project_id}_v1"
+    
+    if claw_adapter.is_claw_daw_available():
+        console.print("  [blue]Claw-DAW detected! Generating headless script and rendering...[/blue]")
+        # 1. Translate Maestro model states to claw-daw script
+        script_path = claw_adapter.translate_to_script(
+            song=song,
+            sections=sections,
+            tracks=tracks,
+            project_dir=project_dir,
+            output_prefix=output_prefix
+        )
+        
+        # 2. Render via claw-daw
+        render_result = claw_adapter.execute_render(script_path)
+        
+        # Copy outputs to project structure
+        render_method = "claw-daw"
+        is_ok = render_result.get("success", False)
+        err_msg = render_result.get("error", "")
+        
+        if is_ok:
+            # Copy generated outputs to audio/ midi/ folders
+            gen_mp3 = project_dir / "out" / f"{output_prefix}.mp3"
+            gen_mid = project_dir / "out" / f"{output_prefix}.mid"
+            if gen_mp3.exists():
+                shutil.copy(gen_mp3, output_file)
+            if gen_mid.exists():
+                shutil.copy(gen_mid, audio_dir / "mix.mid")
+        else:
+            # If claw-daw failed, we try CarlaClient
+            console.print(f"[yellow]Claw-DAW failed to render: {err_msg}. Falling back to CarlaClient...[/yellow]")
+    else:
+        is_ok = False
+        err_msg = "Claw-DAW not found"
+
+    if not is_ok:
+        from maestro_cli.hosts.carla_client import CarlaClient
+        client = CarlaClient()
+        console.print("  [blue]Initializing Carla render engine (fallback)...[/blue]")
+        carla_res = client.render(
+            output_path=output_file,
+            duration=duration,
+            midi_files=midi_files,
+            wait=True
+        )
+        render_method = carla_res["method"]
+        is_ok = (carla_res["status"] == "completed")
+        err_msg = carla_res["error"]
     
     # Save render report
     from maestro_cli.models.render_report import RenderReport
+    import shutil
+    
+    # Determine sample rate and bit depth
+    sample_rate = settings.AUDIO_SAMPLE_RATE
+    bit_depth = settings.AUDIO_BIT_DEPTH
+    
     report = RenderReport(
         project_id=project_id,
-        render_ok=True,
+        render_ok=is_ok,
         output_file=output_file,
         duration_seconds=duration,
-        sample_rate=settings.AUDIO_SAMPLE_RATE,
-        bit_depth=settings.AUDIO_BIT_DEPTH,
+        sample_rate=sample_rate,
+        bit_depth=bit_depth,
         channels=2,
-        status="rendered"
+        status="rendered",
+        warnings=[err_msg] if err_msg else []
     )
     save_json_file(report, state_dir / "render_report.json")
     
-    console.print(f"[green]Render complete:[/green] {output_file}")
-    console.print(f"  Duration: {report.duration_formatted}")
-    console.print(f"  Sample rate: {report.sample_rate}kHz")
+    if report.render_ok:
+        console.print(f"[green]Render complete (via {render_method}):[/green] {output_file}")
+        console.print(f"  Duration: {report.duration_formatted}")
+        console.print(f"  Sample rate: {report.sample_rate}Hz")
+    else:
+        console.print(f"[red]Render failed:[/red] {err_msg}")
+        raise typer.Exit(1)
 
 
 @app.command()
@@ -786,6 +1013,651 @@ def sing(
     console.print(f"[green]✓ Singing voice synthesized successfully to audio/{track}_vox.wav[/green]")
 
 
+@app.command(name="neural-render")
+def neural_render_cmd(
+    project: Optional[str] = typer.Option(None, "-p", "--project", help="Project ID"),
+    prompt: str = typer.Option("male soft worship vocal, afrobeats, 100 bpm", "-pr", "--prompt", help="Text prompt for the vocal model"),
+):
+    """Render audio using the hybrid neural pipeline (symbolic guide -> spectrogram diffusion -> vocoder)"""
+    project_id = get_project_id(project)
+    project_dir = get_project_dir(project_id)
+    audio_dir = project_dir / "audio"
+    audio_dir.mkdir(parents=True, exist_ok=True)
+    
+    console.print(f"[bold magenta]Starting Hybrid Neural Render for project: {project_id}[/bold magenta]")
+    
+    # 1. Check for MIDI inputs (generated during orchestrate step)
+    midi_dir = project_dir / "midi"
+    midi_files = list(midi_dir.glob("*.mid"))
+    if not midi_files:
+        console.print("[red]Error:[/red] No MIDI tracks found. Run 'maestro orchestrate' first.")
+        raise typer.Exit(1)
+        
+    # 2. Render symbolic guide track via claw-daw
+    console.print("[blue]Step 1: Rendering symbolic guide WAV using claw-daw...[/blue]")
+    # We call render command internally
+    from maestro_cli.hosts.claw_daw_adapter import ClawDawAdapter
+    claw_adapter = ClawDawAdapter()
+    
+    # Generate path for the guide txt script
+    output_prefix = f"{project_id}_v1"
+    script_dir = project_dir / "tools"
+    script_path = script_dir / f"{output_prefix}.txt"
+    
+    if not script_path.exists():
+        console.print("[yellow]Warning: Claw-DAW script not found. Creating a fresh script translation...[/yellow]")
+        # Load song, sections, and tracks objects to regenerate
+        try:
+            from maestro_cli.models.song import Song
+            from maestro_cli.models.sections import Sections
+            from maestro_cli.models.tracks import Tracks
+            state_dir = project_dir / "state"
+            song = load_json_file(state_dir / "song.json", Song)
+            sections = load_json_file(state_dir / "sections.json", Sections)
+            tracks = load_json_file(state_dir / "tracks.json", Tracks)
+            
+            script_path = claw_adapter.translate_to_script(
+                song=song,
+                sections=sections,
+                tracks=tracks,
+                project_dir=project_dir,
+                output_prefix=output_prefix
+            )
+        except Exception as e:
+            console.print(f"[red]Error during script translation: {e}[/red]")
+            raise typer.Exit(1)
+            
+    # Execute render
+    render_result = claw_adapter.execute_render(script_path)
+    if not render_result.get("success", False):
+        console.print(f"[red]Claw-DAW rendering failed: {render_result.get('error')}[/red]")
+        raise typer.Exit(1)
+        
+    # Locate guide WAV file
+    guide_wav = project_dir / "out" / f"{output_prefix}.wav"
+    if not guide_wav.exists():
+        # check fallback path
+        guide_wav = project_dir / "audio" / "mix.wav"
+        if not guide_wav.exists():
+            # Try copying the mp3 render output from local or global out folder
+            gen_mp3 = project_dir / "out" / f"{output_prefix}.mp3"
+            if not gen_mp3.exists():
+                # check global out folder relative to maestro-cli root
+                gen_mp3 = project_dir.parent.parent.parent / "out" / f"{output_prefix}.mp3"
+                
+            if gen_mp3.exists():
+                # Convert MP3 guide to WAV using ffmpeg for the spectrogram model
+                guide_wav = project_dir / "audio" / "guide_mix.wav"
+                subprocess.run(["ffmpeg", "-y", "-i", str(gen_mp3), str(guide_wav)], capture_output=True)
+                
+    if not guide_wav.exists():
+        console.print("[red]Error: Guide mix audio not found after rendering.[/red]")
+        raise typer.Exit(1)
+        
+    console.print(f"[green]✓ Guide audio rendering complete: {guide_wav.name}[/green]")
+
+    # 3. Audio2Mel Spectrogram Extraction (Couche 2)
+    console.print("[blue]Step 2: Extracting style spectrogram from guide track (Audio2Mel)...[/blue]")
+    from maestro_cli.hosts.neural_render import NeuralRenderAdapter
+    neural = NeuralRenderAdapter()
+    
+    style_mel = audio_dir / "guide_style.npy"
+    if not neural.audio_to_mel(guide_wav, style_mel):
+        console.print("[red]Error during style spectrogram extraction.[/red]")
+        raise typer.Exit(1)
+    console.print("[green]✓ Style spectrogram extracted.[/green]")
+
+    # 4. Neural Diffusion Synthesis (Couche 3)
+    console.print("[blue]Step 3: Synthesizing neural spectrogram (Prompt+MIDI2Mel)...[/blue]")
+    final_mel = audio_dir / "final_vocal_style.npy"
+    # Choose primary midi file (usually keys or vocal midi if available)
+    primary_midi = midi_dir / "keys.mid"
+    if not primary_midi.exists() and len(midi_files) > 0:
+        primary_midi = midi_files[0]
+        
+    if not neural.render_neural(prompt, primary_midi, style_mel, final_mel):
+        console.print("[red]Error during neural spectrogram synthesis.[/red]")
+        raise typer.Exit(1)
+    console.print("[green]✓ Neural spectrogram synthesized.[/green]")
+
+    # 5. Mel2Wav Vocoder Rendering & MP3 Packaging (Couche 3 final)
+    console.print("[blue]Step 4: Vocoding spectrogram to WAV and encoding to MP3 (Mel2Wav)...[/blue]")
+    vocal_only_wav = audio_dir / "neural_vocal_only.wav"
+    vocal_only_mp3 = audio_dir / "neural_vocal_only.mp3"
+    
+    final_wav = audio_dir / "neural_mix.wav"
+    final_mp3 = audio_dir / "neural_mix.mp3"
+    
+    if not neural.mel_to_audio(final_mel, vocal_only_wav, vocal_only_mp3):
+        console.print("[red]Error during vocoding.[/red]")
+        raise typer.Exit(1)
+        
+    console.print("[blue]Step 5: Mixing neural vocal track with backing instrument guide track...[/blue]")
+    mix_cmd = [
+        "ffmpeg", "-y",
+        "-i", str(guide_wav),
+        "-i", str(vocal_only_wav),
+        "-filter_complex", "[0:a]aresample=44100,pan=stereo|c0=c0|c1=c1[a0];[1:a]aresample=44100,pan=stereo|c0=c0|c1=c1[a1];[a0][a1]amix=inputs=2:duration=first:dropout_transition=2",
+        str(final_wav)
+    ]
+    
+    mix_res = subprocess.run(mix_cmd, capture_output=True)
+    if mix_res.returncode != 0:
+        console.print("[red]Error mixing tracks with FFmpeg.[/red]")
+        raise typer.Exit(1)
+        
+    # Re-encode mixed wav to mp3
+    mp3_cmd = [
+        "ffmpeg", "-y",
+        "-i", str(final_wav),
+        "-codec:a", "libmp3lame",
+        "-q:a", "2",
+        str(final_mp3)
+    ]
+    subprocess.run(mp3_cmd, capture_output=True)
+        
+    console.print(f"[bold green]✓ Hybrid Neural Render Successful![/bold green]")
+    console.print(f"  Final wav output (Vocal + Music): {final_wav}")
+    console.print(f"  Final mp3 output (Vocal + Music): {final_mp3}")
+
+
+
+
+# ============================================================================
+# PROCEDURAL MIDI ENGINE SUB-APP
+# ============================================================================
+
+proc_app = typer.Typer(
+    help="Génération MIDI procédurale (sans LLM) — moteur probabiliste Will-Morr/Procedural_MIDI",
+    rich_markup_mode="rich",
+)
+app.add_typer(proc_app, name="proc")
+
+
+@proc_app.command("gen")
+def proc_gen(
+    project: Optional[str] = typer.Option(None, "-p", "--project", help="Project ID"),
+    role: str = typer.Option("keys", "-r", "--role", help="Rôle MIDI : keys | bass | drums | pad | lead"),
+    bars: int = typer.Option(32, "-b", "--bars", help="Nombre de mesures à générer"),
+    key: str = typer.Option("C", "-k", "--key", help="Tonalité (ex: C, A Minor, F#)"),
+    bpm: int = typer.Option(92, "--bpm", help="Tempo en BPM"),
+    style: str = typer.Option("gospel", "-s", "--style",
+                              help="Style musical : gospel, afrobeats, jazz, pop, synthwave, neo_soul, lo_fi, blues"),
+    seed: Optional[int] = typer.Option(None, "--seed", help="Graine aléatoire (reproductibilité)"),
+    output: Optional[Path] = typer.Option(None, "-o", "--output", help="Chemin de sortie .mid"),
+):
+    """
+    [bold]Génère un fichier MIDI via le moteur procédural[/bold] (aucun LLM requis).
+
+    Exemples :
+      maestro proc gen -p my_song -r keys --bpm 95 --key "C Major"
+      maestro proc gen -r bass -s afrobeats -b 64 -o bass_out.mid
+      maestro proc gen -r drums --seed 42
+    """
+    from maestro_cli.procedural_midi_engine import generate_procedural_midi
+
+    # Résoudre l'output
+    if output is None:
+        if project:
+            project_dir = get_project_dir(project)
+            midi_dir = project_dir / "midi"
+            midi_dir.mkdir(parents=True, exist_ok=True)
+            output = midi_dir / f"proc_{role}.mid"
+        else:
+            output = Path(f"proc_{role}.mid")
+
+    console.print(
+        Panel(
+            f"[bold cyan]Procedural MIDI Engine[/bold cyan]\n"
+            f"  Rôle   : [yellow]{role}[/yellow]\n"
+            f"  Tonalité: [yellow]{key}[/yellow]\n"
+            f"  Style  : [yellow]{style}[/yellow]\n"
+            f"  BPM    : [yellow]{bpm}[/yellow]\n"
+            f"  Mesures: [yellow]{bars}[/yellow]\n"
+            f"  Sortie : [green]{output}[/green]",
+            title="🎹 maestro proc gen",
+            box=box.ROUNDED,
+        )
+    )
+
+    try:
+        result = generate_procedural_midi(
+            output_path=output,
+            role=role,
+            key=key,
+            tempo_bpm=bpm,
+            style=style,
+            total_bars=bars,
+            rand_seed=seed,
+        )
+        console.print(f"[bold green]✓ MIDI généré :[/bold green] {result}")
+    except Exception as exc:
+        console.print(f"[red]Erreur lors de la génération procédurale :[/red] {exc}")
+        raise typer.Exit(1)
+
+
+@proc_app.command("full")
+def proc_full(
+    project: Optional[str] = typer.Option(None, "-p", "--project", help="Project ID"),
+    bars: int = typer.Option(32, "-b", "--bars", help="Nombre de mesures"),
+    key: str = typer.Option("C", "-k", "--key", help="Tonalité"),
+    bpm: int = typer.Option(92, "--bpm", help="Tempo en BPM"),
+    style: str = typer.Option("gospel", "-s", "--style", help="Style musical"),
+    seed: Optional[int] = typer.Option(None, "--seed", help="Graine aléatoire"),
+    output_dir: Optional[Path] = typer.Option(None, "-o", "--output-dir", help="Dossier de sortie"),
+    roles: str = typer.Option("keys,bass,drums,pad", "--roles",
+                               help="Rôles à générer (séparés par virgule)"),
+):
+    """
+    [bold]Génère TOUS les rôles MIDI en une seule commande[/bold] (mode full procédural).
+
+    Crée keys.mid, bass.mid, drums.mid et pad.mid dans le dossier midi/ du projet.
+
+    Exemple :
+      maestro proc full -p my_song --bpm 95 --key "A Minor" --style gospel
+    """
+    from maestro_cli.procedural_midi_engine import generate_procedural_midi
+
+    # Résoudre le dossier de sortie
+    if output_dir is None:
+        if project:
+            output_dir = get_project_dir(project) / "midi"
+        else:
+            output_dir = Path("midi_proc")
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    role_list = [r.strip() for r in roles.split(",") if r.strip()]
+
+    console.print(
+        Panel(
+            f"[bold cyan]Procedural MIDI Engine — FULL GENERATION[/bold cyan]\n"
+            f"  Rôles  : [yellow]{', '.join(role_list)}[/yellow]\n"
+            f"  Tonalité: [yellow]{key}[/yellow]\n"
+            f"  Style  : [yellow]{style}[/yellow]\n"
+            f"  BPM    : [yellow]{bpm}[/yellow]\n"
+            f"  Mesures: [yellow]{bars}[/yellow]\n"
+            f"  Dossier: [green]{output_dir}[/green]",
+            title="🎹 maestro proc full",
+            box=box.ROUNDED,
+        )
+    )
+
+    generated = []
+    errors = []
+
+    for role in role_list:
+        out_path = output_dir / f"{role}.mid"
+        try:
+            result = generate_procedural_midi(
+                output_path=out_path,
+                role=role,
+                key=key,
+                tempo_bpm=bpm,
+                style=style,
+                total_bars=bars,
+                rand_seed=seed,
+            )
+            generated.append(result)
+            console.print(f"  [green]✓[/green] {role:8s} → {result}")
+        except Exception as exc:
+            errors.append((role, str(exc)))
+            console.print(f"  [red]✗[/red] {role:8s} — {exc}")
+
+    console.print()
+    if generated:
+        console.print(f"[bold green]✓ {len(generated)}/{len(role_list)} fichiers générés dans {output_dir}[/bold green]")
+    if errors:
+        console.print(f"[red]{len(errors)} erreur(s) :[/red] {', '.join(r for r, _ in errors)}")
+        raise typer.Exit(1)
+
+
+@proc_app.command("styles")
+def proc_styles():
+    """Liste tous les styles et gammes disponibles dans le moteur procédural."""
+    from maestro_cli.procedural_midi_engine import SCALE_STYLE_MAP, SCALE_SET
+
+    table = Table(title="Styles procéduraux disponibles", show_header=True, header_style="bold cyan")
+    table.add_column("Style", style="yellow")
+    table.add_column("Gamme", style="green")
+    table.add_column("Intervalles")
+
+    for style_name, scale_name in sorted(SCALE_STYLE_MAP.items()):
+        intervals = SCALE_SET.get(scale_name, [])
+        table.add_row(style_name, scale_name, str(intervals))
+
+    console.print(table)
+
+
+
+@proc_app.command("pipeline")
+def proc_pipeline(
+    style: str = typer.Option("gospel", "-s", "--style",
+                              help="Style musical : gospel, afrobeats, jazz, pop, neo_soul, lo_fi"),
+    key: str = typer.Option("C", "-k", "--key", help="Tonalité (ex: C, A Minor, F#)"),
+    bpm: int = typer.Option(92, "--bpm", help="Tempo en BPM"),
+    bars: int = typer.Option(32, "-b", "--bars", help="Nombre de mesures"),
+    seed: Optional[int] = typer.Option(None, "--seed", help="Graine aléatoire"),
+    output_dir: Optional[Path] = typer.Option(None, "-o", "--output-dir",
+                                               help="Dossier de sortie final (défaut: /sdcard/Download/maestro_<style>)"),
+    project_name: Optional[str] = typer.Option(None, "--name", help="Nom du projet"),
+    llm_temp: float = typer.Option(0.75, "--llm-temp", help="Température LLM (créativité 0.0–1.0)"),
+    soundfont: Optional[str] = typer.Option(None, "--sf2", help="Chemin SoundFont .sf2"),
+    roles: str = typer.Option("keys,bass,drums,pad", "--roles",
+                               help="Rôles MIDI à générer (séparés par virgule)"),
+    no_llm: bool = typer.Option(False, "--no-llm", help="Sauter l'étape LLM (procédural pur)"),
+    no_render: bool = typer.Option(False, "--no-render", help="Générer les MIDI seulement, sans rendu audio"),
+):
+    """
+    [bold]Pipeline complet : MIDI-LLM → Procédural → Claw-DAW[/bold]
+
+    Étapes :
+      1. [cyan]MIDI-LLM[/cyan]   — enrichit le contexte musical (accords, gamme, énergie)
+      2. [cyan]Procédural[/cyan] — génère les pistes MIDI (keys/bass/drums/pad)
+      3. [cyan]Claw-DAW[/cyan]   — assemble + rend WAV/MP3 via FluidSynth
+
+    Exemple :
+      maestro proc pipeline --style gospel --key C --bpm 95 --bars 32
+      maestro proc pipeline --style afrobeats --key "A Minor" --bpm 110 --seed 42 -o /sdcard/Download/afro
+    """
+    import shutil as _shutil
+    import subprocess as _subprocess
+    import tempfile
+
+    from maestro_cli.midi_llm_provider import get_midi_llm_provider, MockMidiLLMProvider
+    from maestro_cli.amt_tokenizer import AMTTokenizer, DEFAULT_INSTRUMENTS
+    from maestro_cli.procedural_midi_engine import (
+        generate_procedural_midi, SCALE_STYLE_MAP, SCALE_SET
+    )
+
+    # ── Résolution des chemins ────────────────────────────────────────────────
+    _proj_name = project_name or f"maestro_{style}_{bpm}bpm"
+    _final_dir = output_dir or Path(f"/sdcard/Download/{_proj_name}")
+    _render_dir = Path(tempfile.mkdtemp(prefix="maestro_pipe_"))
+    _midi_dir = _render_dir / "midi"
+    _midi_dir.mkdir(parents=True, exist_ok=True)
+
+    # SoundFont
+    _sf2 = soundfont
+    if not _sf2:
+        for _sf2_candidate in [
+            "/usr/share/sounds/sf2/GeneralUser_GS.sf2",
+            "/usr/share/sounds/sf2/FluidR3_GM.sf2",
+            "/usr/share/sounds/sf2/default-GM.sf2",
+        ]:
+            if Path(_sf2_candidate).exists():
+                _sf2 = _sf2_candidate
+                break
+
+    console.print(Panel(
+        f"[bold cyan]🎼 MIDI-LLM + Procédural + Claw-DAW Pipeline[/bold cyan]\n"
+        f"  Style    : [yellow]{style}[/yellow]    Tonalité : [yellow]{key}[/yellow]\n"
+        f"  BPM      : [yellow]{bpm}[/yellow]       Mesures  : [yellow]{bars}[/yellow]\n"
+        f"  Rôles    : [yellow]{roles}[/yellow]\n"
+        f"  Sortie   : [green]{_final_dir}[/green]\n"
+        f"  SoundFont: [dim]{_sf2 or 'non trouvé'}[/dim]",
+        title="🚀 maestro proc pipeline",
+        box=box.ROUNDED,
+    ))
+
+    role_list = [r.strip() for r in roles.split(",") if r.strip()]
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # ÉTAPE 1 : MIDI-LLM — enrichissement du contexte musical
+    # ──────────────────────────────────────────────────────────────────────────
+    console.print("\n[bold]Étape 1 / 3 — MIDI-LLM[/bold]  [dim](enrichissement musical)[/dim]")
+
+    llm_key_override = key        # peut être mis à jour par le LLM
+    llm_style_override = style    # idem
+
+    if not no_llm:
+        try:
+            provider = get_midi_llm_provider()
+            llm_prompt = (
+                f"Generate a {style} MIDI arrangement in the key of {key} at {bpm} BPM "
+                f"for {bars} bars. Roles: {', '.join(role_list)}. "
+                f"Temperature: {llm_temp}. Suggest chord progression and musical energy."
+            )
+            console.print(f"  [dim]Prompt LLM : {llm_prompt[:80]}...[/dim]")
+
+            tokenizer = AMTTokenizer()
+            notes = provider.generate_notes(
+                llm_prompt,
+                max_tokens=512,
+                temperature=llm_temp,
+            )
+
+            # Extraire des insights du LLM pour guider le moteur procédural
+            # (instruments détectés, densité de notes, registre)
+            if notes:
+                instruments_seen = {n.instrument for n in notes}
+                avg_pitch = sum(n.pitch for n in notes) / len(notes)
+                avg_vel   = sum(n.velocity for n in notes) / len(notes)
+                console.print(
+                    f"  [green]✓[/green] LLM → [cyan]{len(notes)}[/cyan] notes "
+                    f"| instruments: [cyan]{', '.join(instruments_seen)}[/cyan] "
+                    f"| pitch moyen: [cyan]{avg_pitch:.0f}[/cyan] "
+                    f"| vélocité: [cyan]{avg_vel:.0f}[/cyan]"
+                )
+
+                # Ajuster la graine aléatoire basée sur le contenu LLM
+                if seed is None:
+                    llm_derived_seed = int(avg_pitch * 100 + avg_vel * 10 + len(notes))
+                    console.print(f"  [dim]Graine dérivée du LLM : {llm_derived_seed}[/dim]")
+                else:
+                    llm_derived_seed = seed
+            else:
+                console.print("  [yellow]⚠[/yellow] LLM : aucune note générée, moteur procédural pur")
+                llm_derived_seed = seed
+
+        except Exception as exc:
+            console.print(f"  [yellow]⚠ LLM non disponible ({exc}) — mode procédural pur[/yellow]")
+            llm_derived_seed = seed
+    else:
+        console.print("  [dim]--no-llm : étape LLM sautée[/dim]")
+        llm_derived_seed = seed
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # ÉTAPE 2 : MOTEUR PROCÉDURAL — génération MIDI
+    # ──────────────────────────────────────────────────────────────────────────
+    console.print("\n[bold]Étape 2 / 3 — Moteur Procédural[/bold]  [dim](génération MIDI)[/dim]")
+
+    midi_files: dict = {}
+    proc_errors: list = []
+
+    for role in role_list:
+        out_path = _midi_dir / f"{role}.mid"
+        try:
+            result = generate_procedural_midi(
+                output_path=out_path,
+                role=role,
+                key=llm_key_override,
+                tempo_bpm=bpm,
+                style=llm_style_override,
+                total_bars=bars,
+                rand_seed=llm_derived_seed,
+            )
+            midi_files[role] = result
+            console.print(f"  [green]✓[/green] {role:8s} → {result.name}")
+        except Exception as exc:
+            proc_errors.append((role, str(exc)))
+            console.print(f"  [red]✗[/red] {role:8s} — {exc}")
+
+    if not midi_files:
+        console.print("[red]Aucun MIDI généré — abandon.[/red]")
+        raise typer.Exit(1)
+
+    if proc_errors:
+        console.print(f"  [yellow]⚠ {len(proc_errors)} rôle(s) en erreur : {[r for r,_ in proc_errors]}[/yellow]")
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # ÉTAPE 3 : CLAW-DAW — assemblage + rendu audio
+    # ──────────────────────────────────────────────────────────────────────────
+    if no_render:
+        console.print("\n[bold]Étape 3 / 3 — Claw-DAW[/bold]  [dim]--no-render : sauté[/dim]")
+        # Copie les MIDI vers la destination finale quand même
+        _final_dir.mkdir(parents=True, exist_ok=True)
+        for role, path in midi_files.items():
+            dst = _final_dir / path.name
+            _shutil.copy2(path, dst)
+            console.print(f"  [green]✓[/green] {dst}")
+        raise typer.Exit(0)
+
+    console.print("\n[bold]Étape 3 / 3 — Claw-DAW[/bold]  [dim](assemblage + rendu FluidSynth)[/dim]")
+
+    if not _shutil.which("claw-daw"):
+        console.print("[red]claw-daw introuvable sur PATH — rendu annulé.[/red]")
+        raise typer.Exit(1)
+
+    # Construire le script claw-daw
+    _script_path = _render_dir / f"{_proj_name}.txt"
+    _out_base = str(_render_dir / _proj_name)
+
+    ROLE_PARAMS = {
+        "keys":  {"prog": 4,   "ch": 0, "vol": 100, "pan": 64, "kit": None},
+        "lead":  {"prog": 40,  "ch": 0, "vol": 100, "pan": 64, "kit": None},
+        "bass":  {"prog": 38,  "ch": 1, "vol": 110, "pan": 64, "kit": None},
+        "drums": {"prog": 0,   "ch": 9, "vol": 105, "pan": 64, "kit": "gm_basic"},
+        "pad":   {"prog": 89,  "ch": 2, "vol": 75,  "pan": 60, "kit": None},
+    }
+
+    script_lines = [
+        f"# Maestro Pipeline — {_proj_name}",
+        f"# LLM + Procédural + Claw-DAW  |  {style} {key} {bpm}BPM {bars}bars",
+        f"new_project {_proj_name} {bpm}",
+        "set_swing 0",
+        "",
+    ]
+
+    ordered_roles = [r for r in role_list if r in midi_files]
+
+    # Déclaration des pistes
+    for idx, role in enumerate(ordered_roles):
+        p = ROLE_PARAMS.get(role, {"prog": 0, "vol": 90, "pan": 64, "kit": None})
+        if p["kit"]:
+            script_lines.append(f"add_track {role.capitalize()} 0")
+            script_lines.append(f"set_kit {idx} {p['kit']}")
+        else:
+            script_lines.append(f"add_track {role.capitalize()} {p['prog']}")
+        script_lines.append(f"set_volume {idx} {p['vol']}")
+        script_lines.append(f"set_pan    {idx} {p['pan']}")
+        script_lines.append("")
+
+    # Patterns + notes depuis les MIDI générés
+    import mido as _mido
+
+    def _parse_midi_notes(midi_path: Path, role: str, idx: int, pat: str) -> list:
+        note_lines = []
+        try:
+            mid = _mido.MidiFile(str(midi_path))
+            tpb = mid.ticks_per_beat
+            std = 480
+            active: dict = {}
+            for t in mid.tracks:
+                tick = 0
+                for msg in t:
+                    tick += msg.time
+                    if msg.type == "note_on" and msg.velocity > 0:
+                        active[msg.note] = (tick, msg.velocity)
+                    elif msg.type in ("note_off",) or (msg.type == "note_on" and msg.velocity == 0):
+                        if msg.note in active:
+                            st, vel = active.pop(msg.note)
+                            dur = tick - st
+                            if tpb != std:
+                                scale = std / tpb
+                                st = int(st * scale)
+                                dur = int(dur * scale)
+                            tpbar = std * 4
+                            bar_n = st // tpbar; rem = st % tpbar
+                            beat  = rem // std;  tk = rem % std
+                            db = dur // tpbar; dr = dur % tpbar
+                            dbeat = dr // std; dtk = dr % std
+                            drum_map = {
+                                35: "kick", 36: "kick", 38: "snare", 40: "snare",
+                                42: "hihat", 44: "hihat", 46: "openhat",
+                                41: "tom_low", 43: "tom_low", 45: "tom_mid",
+                                47: "tom_mid", 48: "tom_high", 50: "tom_high",
+                                49: "crash", 57: "crash", 51: "ride",
+                            }
+                            pitch_str = drum_map.get(msg.note, str(msg.note)) if role == "drums" else str(msg.note)
+                            note_lines.append(
+                                f"add_note_pat {idx} {pat} {pitch_str} "
+                                f"{bar_n}:{beat}:{tk} {db}:{dbeat}:{dtk} {vel}"
+                            )
+        except Exception as e:
+            console.print(f"  [yellow]⚠ Parse {midi_path.name}: {e}[/yellow]")
+        return note_lines
+
+    total_notes = 0
+    for idx, role in enumerate(ordered_roles):
+        midi_path = midi_files[role]
+        pat = f"pat_{role}"
+        note_lines = _parse_midi_notes(midi_path, role, idx, pat)
+        total_notes += len(note_lines)
+        script_lines.append(f"new_pattern {idx} {pat} {bars}:0")
+        script_lines += note_lines
+        script_lines.append(f"place_pattern {idx} {pat} 0:0")
+        script_lines.append("")
+        console.print(f"  [dim]  {role:8s}: {len(note_lines)} notes parsées[/dim]")
+
+    script_lines += [
+        "# ── Exports ──",
+        f"export_project {_out_base}.json",
+        f"export_midi    {_out_base}.mid",
+        f"export_mp3     {_out_base}.mp3 preset=clean",
+        f"export_wav     {_out_base}.wav",
+    ]
+
+    _script_path.write_text("\n".join(script_lines))
+    console.print(f"\n  [dim]Script claw-daw : {_script_path} ({total_notes} notes totales)[/dim]")
+
+    # Lancer claw-daw
+    cmd = ["claw-daw", "--headless", "--script", str(_script_path)]
+    if _sf2:
+        cmd += ["--soundfont", _sf2]
+
+    console.print(f"  [bold]→ Rendu FluidSynth...[/bold]")
+    try:
+        res = _subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+        render_ok = (res.returncode == 0)
+    except _subprocess.TimeoutExpired:
+        console.print("[red]Timeout claw-daw (300s)[/red]")
+        render_ok = False
+    except Exception as exc:
+        console.print(f"[red]Erreur claw-daw : {exc}[/red]")
+        render_ok = False
+
+    # Copie vers destination finale (cross-device safe)
+    _final_dir.mkdir(parents=True, exist_ok=True)
+
+    console.print(f"\n[bold]✅ Résultats — copie vers {_final_dir}[/bold]")
+
+    # Copie MIDI sources toujours
+    for role, path in midi_files.items():
+        dst = _final_dir / path.name
+        _shutil.copy2(path, dst)
+        console.print(f"  [green]✓[/green] {dst.name:40s}  (MIDI source)")
+
+    # Copie assets rendus si OK
+    if render_ok:
+        for ext in ["mp3", "wav", "mid", "json"]:
+            src = Path(f"{_out_base}.{ext}")
+            if src.exists():
+                dst = _final_dir / src.name
+                _shutil.copy2(src, dst)
+                size_kb = dst.stat().st_size / 1024
+                console.print(f"  [green]✓[/green] {dst.name:40s}  ({size_kb:.1f} KB)")
+        console.print(f"\n[bold green]🎉 Pipeline terminé ![/bold green]  Fichiers dans : [cyan]{_final_dir}[/cyan]")
+    else:
+        console.print(f"\n[yellow]⚠ Rendu claw-daw échoué — MIDI disponibles dans {_final_dir}[/yellow]")
+        if res.stderr:
+            console.print(f"[dim]{res.stderr[:300]}[/dim]")
+
+    # Nettoyage du répertoire temporaire
+    try:
+        _shutil.rmtree(_render_dir)
+    except Exception:
+        pass
+
 
 # ============================================================================
 # MAIN ENTRY POINT
@@ -793,4 +1665,5 @@ def sing(
 
 if __name__ == "__main__":
     app()
+
 

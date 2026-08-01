@@ -1,4 +1,4 @@
-# Test Song
+# Dual LLM Test
 
 - **Style**: gospel
 - **BPM**: 92

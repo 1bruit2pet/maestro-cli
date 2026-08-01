@@ -1,4 +1,4 @@
-# Test Song
+# Qwen4B Test
 
 - **Style**: gospel
 - **BPM**: 92

@@ -26,6 +26,7 @@ from maestro_cli.hosts.presets import (
     StyleNotFoundError,
     RoleMappingError,
 )
+from maestro_cli.hosts.claw_daw_adapter import ClawDawAdapter
 
 __all__ = [
     # OSC layer
@@ -49,4 +50,6 @@ __all__ = [
     "PluginMapNotFoundError",
     "StyleNotFoundError",
     "RoleMappingError",
+    # Claw-DAW
+    "ClawDawAdapter",
 ]

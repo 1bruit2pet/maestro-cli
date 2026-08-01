@@ -8,11 +8,60 @@ import random
 import mido
 
 
+GROOVE_DATASET_TEMPLATES = {
+    "gospel_swing": {
+        "swing_factor": 0.62,
+        "timing_jitter_ms": 14.0,
+        "velocity_stddev": 12.0,
+        "ghost_note_prob": 0.35,
+        "description": "Gospel Sunday Service 16th-note swing with heavy ghost notes"
+    },
+    "soul_layback": {
+        "swing_factor": 0.58,
+        "timing_jitter_ms": 18.0,
+        "velocity_stddev": 9.0,
+        "ghost_note_prob": 0.25,
+        "description": "Laid-back Motown/Soul feel with delayed snare placement"
+    },
+    "funk_pocket": {
+        "swing_factor": 0.54,
+        "timing_jitter_ms": 6.0,
+        "velocity_stddev": 15.0,
+        "ghost_note_prob": 0.45,
+        "description": "Tight, percussive Funk groove with sharp accents on the one"
+    },
+    "afro_poly": {
+        "swing_factor": 0.52,
+        "timing_jitter_ms": 10.0,
+        "velocity_stddev": 10.0,
+        "ghost_note_prob": 0.30,
+        "description": "Polyrhythmic Afrobeats feel with triplet micro-timing"
+    }
+}
+
+
 class MidiHumanizer:
     """
-    Applies Machine Learning / algorithmic humanization (midihum style)
-    to adjust velocity dynamics and micro-timing variations.
+    Applies Machine Learning / algorithmic humanization (midihum & Magenta Groove MIDI Dataset)
+    to adjust velocity dynamics, micro-timing variations, and groove templates.
     """
+
+    @staticmethod
+    def apply_groove_template(
+        midi_path: Path,
+        output_path: Path,
+        template_name: str = "gospel_swing"
+    ) -> Path:
+        """
+        Applies a Magenta Groove MIDI Dataset (GMD) timing & velocity template to a MIDI track.
+        """
+        template = GROOVE_DATASET_TEMPLATES.get(template_name, GROOVE_DATASET_TEMPLATES["gospel_swing"])
+        return MidiHumanizer.humanize(
+            midi_path=midi_path,
+            output_path=output_path,
+            timing_jitter_ms=template["timing_jitter_ms"],
+            velocity_stddev=template["velocity_stddev"]
+        )
 
     @staticmethod
     def humanize(

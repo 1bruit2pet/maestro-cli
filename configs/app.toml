@@ -3,7 +3,7 @@
 
 [llm]
 # LLM provider settings
-provider = "openai"  # openai, anthropic, local
+provider = "local"  # openai, anthropic, local
 api_key = "${LLM_API_KEY}"
 base_url = "${LLM_BASE_URL}"
 model = "${LLM_MODEL}"

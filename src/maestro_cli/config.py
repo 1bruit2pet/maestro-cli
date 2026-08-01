@@ -22,13 +22,21 @@ class Settings(BaseSettings):
     CONFIG_DIR: Path = Field(default_factory=lambda: Path("configs"))
     PROMPTS_DIR: Path = Field(default_factory=lambda: Path("prompts"))
     
-    # LLM Configuration
-    LLM_API_KEY: Optional[str] = None
-    LLM_BASE_URL: str = "https://api.openai.com/v1"
-    LLM_MODEL: str = "gpt-4o"
-    LLM_TIMEOUT: int = 60
-    LLM_MAX_TOKENS: int = 4096
-    LLM_TEMPERATURE: float = 0.7
+    # ── LLM de COMPOSITION (llama-server local port 8081 — Qwen 4B) ──────────
+    LLM_API_KEY: Optional[str] = "sk-no-key-required"
+    LLM_BASE_URL: str = "http://localhost:8081/v1"
+    LLM_MODEL: str = "qwen2.5-1.5b-instruct-q4_k_m.gguf"
+    LLM_TIMEOUT: int = 180
+    LLM_MAX_TOKENS: int = 2048
+    LLM_TEMPERATURE: float = 0.3
+
+    # ── LLM de MIDI / ORCHESTRATION (llama.cpp serveur local) ───────────────
+    MIDI_LLM_BASE_URL: str = "http://127.0.0.1:8080/v1"
+    MIDI_LLM_MODEL: str = "midi-llm"
+    MIDI_LLM_API_KEY: str = "local"
+    MIDI_LLM_TIMEOUT: int = 60
+    LOCAL_MODEL_PATH: Optional[str] = "/root/agy-test/assets/models/gemma-4-E4B-it-UD-IQ2_M.gguf"
+    MIDI_LLM_MODEL_PATH: Optional[str] = None
     
     # Audio Configuration
     AUDIO_SAMPLE_RATE: int = 48000

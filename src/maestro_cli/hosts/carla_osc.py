@@ -192,16 +192,14 @@ class CarlaOSCClient:
         Returns:
             True if Carla is reachable
         """
-        # First try a UDP ping via OSC
         if self._client is not None:
             try:
-                self.send(self.ADDR_PING)
-                # For UDP we can't truly verify delivery, so also check port
+                # Use send_and_wait with a short timeout to check if Carla actually responds
+                reply = self.send_and_wait(self.ADDR_PING, timeout=0.5)
+                return reply is not None
             except Exception:
-                pass
-
-        # Check if the port is open (TCP fallback check)
-        return self._check_port_open()
+                return False
+        return False
 
     def _check_port_open(self) -> bool:
         """Check if the OSC port is reachable"""

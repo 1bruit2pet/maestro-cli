@@ -12,8 +12,31 @@ from maestro_cli.config import settings
 
 logger = logging.getLogger(__name__)
 
-# Default location for plugin_map.json
-DEFAULT_PLUGIN_MAP = Path(__file__).parent.parent.parent.parent / "presets" / "plugin_map.json"
+DEFAULT_PLUGIN_MAP = settings.PROJECT_ROOT / "presets" / "plugin_map.json"
+
+SOUNDFONT_PROFILES = {
+    "generaluser": {
+        "name": "GeneralUser GS",
+        "author": "S. Christian Collins",
+        "url": "https://www.schristiancollins.com/generaluser",
+        "filename": "GeneralUser_GS.sf2",
+        "style_recommendation": "gospel, neo_soul, jazz"
+    },
+    "musescore": {
+        "name": "MuseScore General",
+        "author": "MuseScore Team",
+        "url": "https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf3",
+        "filename": "MuseScore_General.sf3",
+        "style_recommendation": "orchestral, classical, cinematic"
+    },
+    "sgm": {
+        "name": "Shan's General MIDI V2.01",
+        "author": "Shan",
+        "url": "https://archive.org/details/SGM-V2.01",
+        "filename": "SGM-V2.01.sf2",
+        "style_recommendation": "rock, pop, afrobeats"
+    }
+}
 
 
 class PresetError(Exception):

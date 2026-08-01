@@ -7,12 +7,63 @@
 
 ## 🎵 Features
 
-- **LLM-Powered Composition**: Generate song structures from natural language prompts
+- **Dual-LLM Architecture**: Two specialized LLMs — one for composition (Groq/OpenAI), one for MIDI generation (local llama.cpp)
+- **LLM-Powered Composition**: Generate song structures from natural language prompts via Groq
+- **MIDI-LLM Orchestration**: Local llama.cpp server generates AMT (Audio MIDI Transformer) tokens per instrument
 - **Modular Pipeline**: Compose → Arrange → Orchestrate → Critique → Repair → Render
 - **Carla Integration**: Host VST/LV2 plugins and render audio via OSC
 - **MIDI 2.0 Ready**: Architecture prepared for UMP and MIDI-CI
 - **Deterministic Workflow**: Each step reads validated JSON and writes validated JSON
 - **Project Management**: Organize songs with versioned state files
+
+---
+
+## 🤖 Dual-LLM Architecture
+
+Maestro uses **two distinct LLMs** for different tasks:
+
+| Role | LLM | Task | Config |
+|------|-----|------|--------|
+| **Composition** | Groq `llama-3.3-70b-versatile` (distant) | `maestro compose` — génère la structure JSON (sections, accords, style) | `LLM_*` dans `.env` |
+| **MIDI / Orchestration** | llama.cpp local HTTP (port 8080) | `maestro orchestrate` — génère les tokens AMT par instrument | `MIDI_LLM_*` dans `.env` |
+
+### Flux de données
+
+```
+Prompt textuel
+      │
+      ▼
+[Groq LLM] ──► song.json (structure: key, bpm, sections, chords)
+      │
+      ▼
+[llama.cpp MIDI-LLM] ──► tokens AMT ──► fichiers .mid par instrument
+      │
+      ▼
+[Carla / Claw-DAW] ──► mix.wav
+```
+
+### Configuration `.env`
+
+```bash
+# LLM de composition (Groq / OpenAI-compatible distant)
+LLM_API_KEY=gsk_votre_clé_groq
+LLM_BASE_URL=https://api.groq.com/openai/v1
+LLM_MODEL=llama-3.3-70b-versatile
+
+# MIDI-LLM local (llama.cpp HTTP)
+MIDI_LLM_BASE_URL=http://127.0.0.1:8080/v1
+MIDI_LLM_MODEL=midi-llm
+MIDI_LLM_API_KEY=local
+```
+
+### Démarrer le serveur MIDI-LLM local
+
+```bash
+# Avec llama.cpp (llama-server)
+llama-server -m /path/to/midi-llm.Q4_K_M.gguf --port 8080
+
+# Si indisponible → MockMidiLLMProvider (heuristique musicale) s'active automatiquement
+```
 
 ---
 
